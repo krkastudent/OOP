@@ -14,9 +14,21 @@ void printArray(int (&arr)[10]){
     }
 }
 
+void swapElements(int (&arr)[10], int &first, int &second){
+    int a = arr[first];
+    arr[first] = arr[second];
+    arr[second] = a;
+}
+
 int main() {
     int array[10];
     fillArray(array);
-    cout << "Вывод массива: ";
+    cout << "Исходный массив: ";
+    printArray(array);
+
+    int first = 0;
+    int second = 9;
+    swapElements(array, first, second);
+    cout << "Массив, после обмена первого и последнего элемента: ";
     printArray(array);
 }

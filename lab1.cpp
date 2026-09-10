@@ -8,11 +8,15 @@ void fillArray(int (&arr)[10]){
     }
 }
 
+void printArray(int (&arr)[10]){
+    for (int i = 0; i < 10; i++){
+        cout << arr[i] << " ";
+    }
+}
+
 int main() {
     int array[10];
     fillArray(array);
-    for (int i = 0; i < 10; i++){
-        cout << array[i] << " ";
-    }
-
+    cout << "Вывод массива: ";
+    printArray(array);
 }

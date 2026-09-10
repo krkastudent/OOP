@@ -12,12 +12,19 @@ void printArray(int (&arr)[10]){
     for (int i = 0; i < 10; i++){
         cout << arr[i] << " ";
     }
+    cout << "\n";
 }
 
 void swapElements(int (&arr)[10], int &first, int &second){
     int a = arr[first];
     arr[first] = arr[second];
     arr[second] = a;
+}
+
+void multiplyByTwo(int (&arr)[10]){
+    for (int i = 0; i < 10; i++){
+        arr[i] *= 2;
+    }
 }
 
 int main() {
@@ -30,5 +37,9 @@ int main() {
     int second = 9;
     swapElements(array, first, second);
     cout << "Массив, после обмена первого и последнего элемента: ";
+    printArray(array);
+
+    multiplyByTwo(array);
+    cout << "Массив, после умножения всех элементов на два: ";
     printArray(array);
 }

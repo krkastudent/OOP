@@ -1,0 +1,11 @@
+*.exe
+*.out
+a.out
+lab1
+*.o
+
+.vscode/
+
+latex/*.aux
+latex/*.log
+latex/*.toc

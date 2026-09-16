@@ -1,6 +1,9 @@
 #include <iostream>
+#include <string>
+
 using namespace std;
 
+// 1. Выделение памяти под двумерный массив
 int** allocateMatrix(int rows, int cols)
 {
     int** matrix = new int*[rows];
@@ -13,6 +16,8 @@ int** allocateMatrix(int rows, int cols)
     return matrix;
 }
 
+
+// 2. Заполнение матрицы
 void fillMatrix(int** matrix, int rows, int cols)
 {
     cout << "Введите оценки студентов:" << endl;
@@ -29,6 +34,8 @@ void fillMatrix(int** matrix, int rows, int cols)
     }
 }
 
+
+// 3. Красивый вывод матрицы
 void printMatrix(int** matrix, int rows, int cols,
                  bool showBorders = true,
                  string title = "Matrix")
@@ -73,7 +80,49 @@ void printMatrix(int** matrix, int rows, int cols,
 }
 
 
+void printMatrix(int** matrix, int rows, int cols, string title)
+{
+    printMatrix(matrix, rows, cols, true, title);
+}
 
-int main(){
 
+// 5. Освобождение памяти
+void freeMatrix(int** matrix, int rows)
+{
+    for (int i = 0; i < rows; i++)
+    {
+        delete[] matrix[i];
+    }
+
+    delete[] matrix;
+}
+
+
+int main()
+{
+    int rows;
+    int cols;
+
+    cout << "Количество студентов: ";
+    cin >> rows;
+
+    cout << "Количество предметов: ";
+    cin >> cols;
+
+    int** grades = allocateMatrix(rows, cols);
+
+    fillMatrix(grades, rows, cols);
+
+
+    // 4. Три варианта вызова функции
+
+    printMatrix(grades, rows, cols);
+
+    printMatrix(grades, rows, cols, "Оценки студентов");
+
+    printMatrix(grades, rows, cols, false, "Оценки без рамки");
+
+    freeMatrix(grades, rows);
+
+    return 0;
 }

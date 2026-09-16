@@ -24,21 +24,41 @@ void process(int*& arr, int& size){
 }
 
 
-int main(){
+int main() {
+    // 1. Спрашиваем размер массива
     int N;
     cout << "Введите размер массива N: ";
     cin >> N;
 
-    int* arr = new int[]{};
+    // 2. Выделяем память под массив
+    int* arr = new int[N]{};
 
     cout << "Введите " << N << " целых чисел: " << endl;
-    for (int i = 0; i < N; i++){
+    for (int i = 0; i < N; i++) {
         cin >> arr[i];
     }
 
+    // временный вывод для проверки ввода
     cout << "Введённый массив: ";
-    for (int i = 0; i < N; i++){
+    for (int i = 0; i < N; i++) {
         cout << arr[i] << " ";
     }
     cout << "\n";
+
+    // 3. Обрабатываем массив
+    process(arr, N);
+
+    // 4. Выводим результат
+    cout << "Результат: ";
+    if (N == 0) {
+        cout << "(массив пуст)";
+    } else {
+        for (int i = 0; i < N; i++) {
+            cout << arr[i] << " ";
+        }
+    }
+    cout << "\n";
+
+    delete[] arr;
+    return 0;
 }

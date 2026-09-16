@@ -1,6 +1,29 @@
 #include <iostream>
 using namespace std;
 
+void process(int*& arr, int& size){
+    int negIndex = -1;
+
+    for (int i = 0; i < size; i++){
+        if (arr[i] < 0 ){
+            negIndex = i;
+            break;
+        }
+    }
+    cout << "Первый отрицательный элемент на индексе: " << negIndex << "\n";
+
+    if (negIndex != -1){
+        int* newArr = new int[negIndex]{};
+        for (int i = 0; i < negIndex; i++){
+            newArr[i] = arr[i];
+        }
+        delete[] arr;
+        arr = newArr;
+        size = negIndex;
+    }
+}
+
+
 int main(){
     int N;
     cout << "Введите размер массива N: ";
@@ -18,7 +41,4 @@ int main(){
         cout << arr[i] << " ";
     }
     cout << "\n";
-
-    delete[] arr;
-    return 0;
 }

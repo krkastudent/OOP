@@ -30,6 +30,33 @@ void printSafe(const SafeArray& arr) {
     cout << "\n";
 }
 
+void reSizeArray(SafeArray& arr, int M) {
+    int N = arr.size;
+    int* newData = new int[M]{};
+
+    if (M < N) {
+        cout << "Удалённые элементы: ";
+        for (int i = M; i < N; i++) {
+            cout << arr.data[i] << " ";
+        }
+        cout << "\n";
+
+        for (int i = 0; i < M; i++) {
+            newData[i] = arr.data[i];
+        }
+    } else {
+        for (int i = 0; i < N; i++) {
+            newData[i] = arr.data[i];
+        }
+    }
+
+    delete[] arr.data;
+    arr.data = newData;
+    arr.size = M;
+}
+
+
+
 int main(){
-    
+
 }

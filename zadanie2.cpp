@@ -1,28 +1,29 @@
 #include <iostream>
 using namespace std;
 
-void process(int*& arr, int& size){
+void process(int*& arr, int& size) {
     int negIndex = -1;
 
-    for (int i = 0; i < size; i++){
-        if (arr[i] < 0 ){
+    for (int i = 0; i < size; i++) {
+        if (arr[i] < 0) {
             negIndex = i;
             break;
         }
     }
+
     cout << "Первый отрицательный элемент на индексе: " << negIndex << "\n";
 
-    if (negIndex != -1){
+    if (negIndex != -1) {
         int* newArr = new int[negIndex]{};
-        for (int i = 0; i < negIndex; i++){
+        for (int i = 0; i < negIndex; i++) {
             newArr[i] = arr[i];
         }
-        delete[] arr;
-        arr = newArr;
-        size = negIndex;
+
+        delete[] arr;   
+        arr = newArr;      
+        size = negIndex;   
     }
 }
-
 
 int main() {
     // 1. Спрашиваем размер массива
@@ -38,7 +39,6 @@ int main() {
         cin >> arr[i];
     }
 
-    // временный вывод для проверки ввода
     cout << "Введённый массив: ";
     for (int i = 0; i < N; i++) {
         cout << arr[i] << " ";
@@ -59,6 +59,15 @@ int main() {
     }
     cout << "\n";
 
+    // 5. Освобождаем память и обнуляем указатель
     delete[] arr;
+    arr = nullptr;
+
+    if (arr == nullptr) {
+        cout << "Указатель обнулён, обращение к памяти невозможно (dangling pointer исключён)." << endl;
+    } else {
+        cout << arr[0] << endl;
+    }
+
     return 0;
 }

@@ -51,8 +51,6 @@ int main()
     cout << "Счёт 3:" << endl;
     account3.printInfo();
 
-
-
     cout << endl;
     cout << "===== КОРРЕКТНЫЕ ОПЕРАЦИИ =====" << endl;
 
@@ -74,5 +72,73 @@ int main()
     {
         cout << "Со счёта 2 снято 2000 рублей." << endl;
     }
+
+        cout << endl;
+    cout << "===== НЕКОРРЕКТНЫЕ ОПЕРАЦИИ =====" << endl;
+
+
+    try
+    {
+        account1.deposit(-1000.0);
+    }
+    catch (const exception& e)
+    {
+        cout << e.what() << endl;
+    }
+
+
+    try
+    {
+        if (!account2.withdraw(100000.0))
+        {
+            cout << "Ошибка: недостаточно средств на счёте 2."
+                 << endl;
+        }
+    }
+    catch (const exception& e)
+    {
+        cout << e.what() << endl;
+    }
+
+    account3.block();
+
+    try
+    {
+        account3.deposit(1000.0);
+    }
+    catch (const exception& e)
+    {
+        cout << e.what() << endl;
+    }
+
+
+    try
+    {
+        BankAccount badAccount(
+            "Алексей",
+            "123",
+            -500.0,
+            AccountType::Debit
+        );
+    }
+    catch (const exception& e)
+    {
+        cout << e.what() << endl;
+    }
+
+    cout << endl;
+    cout << "===== СОСТОЯНИЕ ПОСЛЕ ОПЕРАЦИЙ =====" << endl;
+
+    cout << endl;
+    cout << "Счёт 1:" << endl;
+    account1.printInfo();
+
+    cout << endl;
+    cout << "Счёт 2:" << endl;
+    account2.printInfo();
+
+    cout << endl;
+    cout << "Счёт 3:" << endl;
+    account3.printInfo();
 }
 

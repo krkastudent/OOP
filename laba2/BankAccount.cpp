@@ -8,6 +8,10 @@
 int BankAccount::objectCount = 0;
 long long BankAccount::nextAccountNumber = 1000000000;
 
+
+/**
+ * @brief Конструктор без параметров.
+ */
 BankAccount::BankAccount()
     : owner("Без имени"),
       accountNumber(to_string(nextAccountNumber++)),
@@ -19,6 +23,9 @@ BankAccount::BankAccount()
 }
 
 
+/**
+ * @brief Полный параметризованный конструктор.
+ */
 BankAccount::BankAccount(
     const string& owner,
     const string& accountNumber,
@@ -38,6 +45,9 @@ BankAccount::BankAccount(
 }
 
 
+/**
+ * @brief Сокращённый параметризованный конструктор.
+ */
 BankAccount::BankAccount(
     const string& owner,
     double initialBalance,
@@ -51,6 +61,9 @@ BankAccount::BankAccount(
 }
 
 
+/**
+ * @brief Деструктор объекта.
+ */
 BankAccount::~BankAccount()
 {
     cout << "Деструктор: счёт "
@@ -60,6 +73,10 @@ BankAccount::~BankAccount()
     objectCount--;
 }
 
+
+/**
+ * @brief Проверяет имя владельца.
+ */
 void BankAccount::validateOwner(const string& owner) const
 {
     if (owner.empty())
@@ -71,6 +88,9 @@ void BankAccount::validateOwner(const string& owner) const
 }
 
 
+/**
+ * @brief Проверяет номер счёта.
+ */
 void BankAccount::validateAccountNumber(
     const string& number) const
 {
@@ -90,6 +110,9 @@ void BankAccount::validateAccountNumber(
 }
 
 
+/**
+ * @brief Проверяет начальный баланс.
+ */
 void BankAccount::validateBalance(double balance) const
 {
     if (balance < 0)
@@ -100,35 +123,55 @@ void BankAccount::validateBalance(double balance) const
     }
 }
 
+
+/**
+ * @brief Возвращает имя владельца.
+ */
 string BankAccount::getOwner() const
 {
     return owner;
 }
 
 
+/**
+ * @brief Возвращает номер счёта.
+ */
 string BankAccount::getAccountNumber() const
 {
     return accountNumber;
 }
 
 
+/**
+ * @brief Возвращает баланс.
+ */
 double BankAccount::getBalance() const
 {
     return balance;
 }
 
 
+/**
+ * @brief Возвращает тип счёта.
+ */
 AccountType BankAccount::getType() const
 {
     return type;
 }
 
 
+/**
+ * @brief Проверяет блокировку счёта.
+ */
 bool BankAccount::isBlocked() const
 {
     return blocked;
 }
 
+
+/**
+ * @brief Пополняет счёт.
+ */
 void BankAccount::deposit(double amount)
 {
     if (blocked)
@@ -149,6 +192,9 @@ void BankAccount::deposit(double amount)
 }
 
 
+/**
+ * @brief Снимает деньги со счёта.
+ */
 bool BankAccount::withdraw(double amount)
 {
     if (blocked)
@@ -175,17 +221,28 @@ bool BankAccount::withdraw(double amount)
     return true;
 }
 
+
+/**
+ * @brief Блокирует счёт.
+ */
 void BankAccount::block()
 {
     blocked = true;
 }
 
 
+/**
+ * @brief Разблокирует счёт.
+ */
 void BankAccount::unblock()
 {
     blocked = false;
 }
 
+
+/**
+ * @brief Преобразует тип счёта в строку.
+ */
 string accountTypeToString(AccountType type)
 {
     switch (type)
@@ -204,6 +261,10 @@ string accountTypeToString(AccountType type)
     }
 }
 
+
+/**
+ * @brief Выводит информацию о банковском счёте.
+ */
 void BankAccount::printInfo() const
 {
     cout << "-----------------------------" << endl;
@@ -229,4 +290,13 @@ void BankAccount::printInfo() const
          << endl;
 
     cout << "-----------------------------" << endl;
+}
+
+
+/**
+ * @brief Возвращает количество существующих объектов.
+ */
+int BankAccount::getObjectCount()
+{
+    return objectCount;
 }

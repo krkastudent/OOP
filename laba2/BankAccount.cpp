@@ -174,3 +174,59 @@ bool BankAccount::withdraw(double amount)
 
     return true;
 }
+
+void BankAccount::block()
+{
+    blocked = true;
+}
+
+
+void BankAccount::unblock()
+{
+    blocked = false;
+}
+
+string accountTypeToString(AccountType type)
+{
+    switch (type)
+    {
+    case AccountType::Debit:
+        return "Дебетовый";
+
+    case AccountType::Salary:
+        return "Зарплатный";
+
+    case AccountType::Savings:
+        return "Накопительный";
+
+    default:
+        return "Неизвестный";
+    }
+}
+
+void BankAccount::printInfo() const
+{
+    cout << "-----------------------------" << endl;
+
+    cout << "Владелец: "
+         << owner << endl;
+
+    cout << "Номер счёта: "
+         << accountNumber << endl;
+
+    cout << "Баланс: "
+         << fixed
+         << setprecision(2)
+         << balance
+         << " руб." << endl;
+
+    cout << "Тип счёта: "
+         << accountTypeToString(type)
+         << endl;
+
+    cout << "Состояние: "
+         << (blocked ? "заблокирован" : "активен")
+         << endl;
+
+    cout << "-----------------------------" << endl;
+}

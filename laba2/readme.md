@@ -1,6 +1,6 @@
-Лабораторная работа №2 по ООП
-Вариант: Банковский счёт (BankAccount)
-№1. Определение сущности согласно варианту
+# Лабораторная работа №2 по ООП
+## Вариант: Банковский счёт (BankAccount)
+### №1. Определение сущности согласно варианту
 1. Что представляет собой объект?
 
 Объект BankAccount представляет собой банковский счёт одного клиента. Объект хранит информацию о владельце счёта, его номере, текущем балансе, типе счёта и состоянии блокировки.
@@ -17,11 +17,11 @@
 
 В классе используются следующие поля:
 
-string owner — имя владельца;
-string accountNumber — номер банковского счёта;
-double balance — текущий баланс;
-AccountType type — тип банковского счёта;
-bool blocked — состояние блокировки.
+string owner - имя владельца;
+string accountNumber - номер банковского счёта;
+double balance - текущий баланс;
+AccountType type - тип банковского счёта;
+bool blocked - состояние блокировки.
 
 Для представления типа счёта используется пользовательский тип AccountType.
 
@@ -48,13 +48,19 @@ bool blocked — состояние блокировки.
 сумма снятия меньше или равна нулю;
 попытка снять больше денег, чем есть на счёте;
 попытка изменить баланс заблокированного счёта.
-№2. Проектирование класса
-Элемент	Описание
-Имя класса	BankAccount
-Поля	string owner, string accountNumber, double balance, AccountType type, bool blocked, static int objectCount, static long long nextAccountNumber
-Конструкторы	BankAccount() — создание счёта со значениями по умолчанию; BankAccount(owner, accountNumber, initialBalance, type) — создание с полными параметрами; BankAccount(owner, initialBalance, type) — создание с автоматическим номером счёта
-Методы чтения	getOwner(), getAccountNumber(), getBalance(), getType(), isBlocked(), getObjectCount()
-Методы изменения	deposit(), withdraw(), block(), unblock()
-Инварианты	Имя владельца не пустое; номер счёта содержит ровно 10 цифр; баланс не может быть отрицательным; суммы операций должны быть больше нуля; заблокированный счёт не может выполнять операции с балансом
-Метод вывода	printInfo()
-Деструктор	~BankAccount() — выводит сообщение об уничтожении объекта и уменьшает счётчик существующих объектов
+### №2. Проектирование класса
+Имя класса:	BankAccount
+
+Поля: string owner, string accountNumber, double balance, AccountType type, bool blocked, static int objectCount, static long long nextAccountNumber
+
+Конструкторы: BankAccount() - создание счёта со значениями по умолчанию; BankAccount(owner, accountNumber, initialBalance, type) - создание с полными параметрами; BankAccount(owner, initialBalance, type) - создание с автоматическим номером счёта
+
+Методы чтения: getOwner(), getAccountNumber(), getBalance(), getType(), isBlocked(), getObjectCount()
+
+Методы изменения:deposit(), withdraw(), block(), unblock()
+
+Инварианты: Имя владельца не пустое; номер счёта содержит ровно 10 цифр; баланс не может быть отрицательным; суммы операций должны быть больше нуля; заблокированный счёт не может выполнять операции с балансом
+
+Метод вывода: printInfo()
+
+Деструктор: ~BankAccount() - выводит сообщение об уничтожении объекта и уменьшает счётчик существующих объектов

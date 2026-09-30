@@ -59,3 +59,43 @@ BankAccount::~BankAccount()
 
     objectCount--;
 }
+
+void BankAccount::validateOwner(const string& owner) const
+{
+    if (owner.empty())
+    {
+        throw invalid_argument(
+            "Ошибка: имя владельца не может быть пустым."
+        );
+    }
+}
+
+
+void BankAccount::validateAccountNumber(
+    const string& number) const
+{
+    if (number.length() != 10 ||
+        !all_of(
+            number.begin(),
+            number.end(),
+            [](unsigned char c)
+            {
+                return isdigit(c);
+            }))
+    {
+        throw invalid_argument(
+            "Ошибка: номер счёта должен содержать ровно 10 цифр."
+        );
+    }
+}
+
+
+void BankAccount::validateBalance(double balance) const
+{
+    if (balance < 0)
+    {
+        throw invalid_argument(
+            "Ошибка: начальный баланс не может быть отрицательным."
+        );
+    }
+}

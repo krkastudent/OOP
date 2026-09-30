@@ -99,3 +99,78 @@ void BankAccount::validateBalance(double balance) const
         );
     }
 }
+
+string BankAccount::getOwner() const
+{
+    return owner;
+}
+
+
+string BankAccount::getAccountNumber() const
+{
+    return accountNumber;
+}
+
+
+double BankAccount::getBalance() const
+{
+    return balance;
+}
+
+
+AccountType BankAccount::getType() const
+{
+    return type;
+}
+
+
+bool BankAccount::isBlocked() const
+{
+    return blocked;
+}
+
+void BankAccount::deposit(double amount)
+{
+    if (blocked)
+    {
+        throw runtime_error(
+            "Ошибка: счёт заблокирован."
+        );
+    }
+
+    if (amount <= 0)
+    {
+        throw invalid_argument(
+            "Ошибка: сумма пополнения должна быть больше нуля."
+        );
+    }
+
+    balance += amount;
+}
+
+
+bool BankAccount::withdraw(double amount)
+{
+    if (blocked)
+    {
+        throw runtime_error(
+            "Ошибка: счёт заблокирован."
+        );
+    }
+
+    if (amount <= 0)
+    {
+        throw invalid_argument(
+            "Ошибка: сумма снятия должна быть больше нуля."
+        );
+    }
+
+    if (amount > balance)
+    {
+        return false;
+    }
+
+    balance -= amount;
+
+    return true;
+}

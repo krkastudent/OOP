@@ -25,4 +25,22 @@ class BankAccount
     void validateOwner(const string& owner) const;
     void validateAccountNumber(const string& number) const;
     void validateBalance(double balance) const;
+
+    public:
+    BankAccount();
+
+    BankAccount(
+        const string& owner,
+        const string& accountNumber,
+        double initialBalance,
+        AccountType type
+    );
+
+    BankAccount(
+        const string& owner,
+        double initialBalance,
+        AccountType type
+    );
+
+    ~BankAccount();
 };

@@ -1,0 +1,309 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.18.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Лабораторная работа №1: Файл zadanie1.cpp</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="codefolding.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Лабораторная работа №1
+   </div>
+   <div id="projectbrief">Выполнение заданий на с++</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.18.0 -->
+<script type="text/javascript">
+let searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', codefold.init);
+</script>
+<script type="application/json" id="doxygen-config">
+{
+  "relPath": "",
+  "generateTreeView": true,
+  "searchEngine": true,
+  "serverBasedSearch": false,
+  "disableIndex": false,
+  "dynamicMenus": true,
+  "fullSidebar": false
+}
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<div id="main-nav-mobile">
+<div class="sm sm-dox"><input id="main-menu-state" type="checkbox"/>
+<label class="main-menu-btn" for="main-menu-state">
+<span class="main-menu-btn-icon"></span> Toggle main menu visibility</label>
+<span id="searchBoxPos1"></span>
+</div>
+</div><!-- main-nav-mobile -->
+<div id="main-nav">
+  <ul class="sm sm-dox" id="main-menu">
+    <li id="searchBoxPos2">
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="Поиск" accesskey="S"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+    </li>
+  </ul>
+</div><!-- main-nav -->
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded',() => { initNavTree('zadanie1_8cpp.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Загрузка...</div>
+<div class="SRStatus" id="Searching">Поиск...</div>
+<div class="SRStatus" id="NoMatches">Не найдено</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Файл zadanie1.cpp</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Программа для демонстрации работы с массивом целых чисел.  
+<a href="#details">Подробнее...</a></p>
+<div class="textblock"><code>#include &lt;iostream&gt;</code><br />
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
+Функции</h2></td></tr>
+<tr class="memitem:afa6a170da18a01e35c0a869ec25c1b5f" id="r_afa6a170da18a01e35c0a869ec25c1b5f"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#afa6a170da18a01e35c0a869ec25c1b5f">fillArray</a> (int(&amp;arr)[10])</td></tr>
+<tr class="memdesc:afa6a170da18a01e35c0a869ec25c1b5f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Заполняет массив из 10 элементов значениями, введёнными пользователем.  <br /></td></tr>
+<tr class="memitem:a4b420339986728dff0c4b7d6c657a9ec" id="r_a4b420339986728dff0c4b7d6c657a9ec"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a4b420339986728dff0c4b7d6c657a9ec">printArray</a> (int(&amp;arr)[10])</td></tr>
+<tr class="memdesc:a4b420339986728dff0c4b7d6c657a9ec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Выводит содержимое массива из 10 элементов в стандартный поток вывода.  <br /></td></tr>
+<tr class="memitem:a095976ebed29c19006d14663458f48f1" id="r_a095976ebed29c19006d14663458f48f1"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a095976ebed29c19006d14663458f48f1">swapElements</a> (int(&amp;arr)[10], int &amp;first, int &amp;second)</td></tr>
+<tr class="memdesc:a095976ebed29c19006d14663458f48f1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Меняет местами два элемента массива по заданным индексам.  <br /></td></tr>
+<tr class="memitem:ab3a1e0edf7078e3c1b97da7b4a552f05" id="r_ab3a1e0edf7078e3c1b97da7b4a552f05"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#ab3a1e0edf7078e3c1b97da7b4a552f05">multiplyByTwo</a> (int(&amp;arr)[10])</td></tr>
+<tr class="memdesc:ab3a1e0edf7078e3c1b97da7b4a552f05"><td class="mdescLeft">&#160;</td><td class="mdescRight">Умножает каждый элемент массива на два.  <br /></td></tr>
+<tr class="memitem:ae66f6b31b5ad750f1fe042a706a4e3d4" id="r_ae66f6b31b5ad750f1fe042a706a4e3d4"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#ae66f6b31b5ad750f1fe042a706a4e3d4">main</a> ()</td></tr>
+<tr class="memdesc:ae66f6b31b5ad750f1fe042a706a4e3d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Точка входа в программу.  <br /></td></tr>
+</table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Подробное описание</h2>
+<div class="textblock"><p>Программа для демонстрации работы с массивом целых чисел. </p>
+<p>Программа выполняет три операции над массивом из 10 целых чисел:</p><ul>
+<li>заполнение с клавиатуры;</li>
+<li>обмен первого и последнего элементов;</li>
+<li>умножение всех элементов на два.</li>
+</ul>
+<dl class="section author"><dt>Автор</dt><dd>krkastudent Погосян Даниил 606-42 </dd></dl>
+<dl class="section date"><dt>Дата</dt><dd>2026 </dd></dl>
+</div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Функции</h2>
+<a id="afa6a170da18a01e35c0a869ec25c1b5f" name="afa6a170da18a01e35c0a869ec25c1b5f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afa6a170da18a01e35c0a869ec25c1b5f">&#9670;&#160;</a></span>fillArray()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void fillArray </td>
+          <td>(</td>
+          <td class="paramtype">int(&amp;)</td>          <td class="paramname"><span class="paramname"><em>arr</em></span>[10]</td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Заполняет массив из 10 элементов значениями, введёнными пользователем. </p>
+<p>Функция последовательно считывает 10 целых чисел из стандартного потока ввода и записывает их в переданный массив.</p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">arr</td><td>Ссылка на массив из 10 целых чисел, который будет заполнен.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Заметки</dt><dd>Размер массива фиксирован и равен 10 элементам. </dd></dl>
+<dl class="section warning"><dt>Предупреждения</dt><dd>При вводе нечисловых значений поток переходит в состояние ошибки. </dd></dl>
+
+</div>
+</div>
+<a id="ae66f6b31b5ad750f1fe042a706a4e3d4" name="ae66f6b31b5ad750f1fe042a706a4e3d4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae66f6b31b5ad750f1fe042a706a4e3d4">&#9670;&#160;</a></span>main()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int main </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Точка входа в программу. </p>
+<p>Последовательно выполняет:</p><ol type="1">
+<li>заполнение массива пользователем;</li>
+<li>вывод исходного массива;</li>
+<li>обмен первого и последнего элементов;</li>
+<li>вывод массива после обмена;</li>
+<li>умножение всех элементов на два;</li>
+<li>вывод итогового массива.</li>
+</ol>
+<dl class="section return"><dt>Возвращает</dt><dd>0 при успешном завершении программы. </dd></dl>
+<p>Массив из 10 целых чисел, с которым выполняются операции.</p>
+<p>Индекс первого элемента для обмена.</p>
+<p>Индекс последнего элемента для обмена.</p>
+
+</div>
+</div>
+<a id="ab3a1e0edf7078e3c1b97da7b4a552f05" name="ab3a1e0edf7078e3c1b97da7b4a552f05"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab3a1e0edf7078e3c1b97da7b4a552f05">&#9670;&#160;</a></span>multiplyByTwo()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void multiplyByTwo </td>
+          <td>(</td>
+          <td class="paramtype">int(&amp;)</td>          <td class="paramname"><span class="paramname"><em>arr</em></span>[10]</td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Умножает каждый элемент массива на два. </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">arr</td><td>Ссылка на массив из 10 целых чисел.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Заметки</dt><dd>Изменения применяются непосредственно к исходному массиву. </dd></dl>
+
+</div>
+</div>
+<a id="a4b420339986728dff0c4b7d6c657a9ec" name="a4b420339986728dff0c4b7d6c657a9ec"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4b420339986728dff0c4b7d6c657a9ec">&#9670;&#160;</a></span>printArray()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void printArray </td>
+          <td>(</td>
+          <td class="paramtype">int(&amp;)</td>          <td class="paramname"><span class="paramname"><em>arr</em></span>[10]</td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Выводит содержимое массива из 10 элементов в стандартный поток вывода. </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">arr</td><td>Константная ссылка на массив из 10 целых чисел.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Элементы разделяются пробелом, после последнего элемента выводится символ перевода строки. </p>
+
+</div>
+</div>
+<a id="a095976ebed29c19006d14663458f48f1" name="a095976ebed29c19006d14663458f48f1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a095976ebed29c19006d14663458f48f1">&#9670;&#160;</a></span>swapElements()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void swapElements </td>
+          <td>(</td>
+          <td class="paramtype">int(&amp;)</td>          <td class="paramname"><span class="paramname"><em>arr</em></span>[10], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int &amp;</td>          <td class="paramname"><span class="paramname"><em>first</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int &amp;</td>          <td class="paramname"><span class="paramname"><em>second</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Меняет местами два элемента массива по заданным индексам. </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">arr</td><td>Ссылка на массив из 10 целых чисел. </td></tr>
+    <tr><td class="paramname">first</td><td>Индекс первого элемента для обмена. </td></tr>
+    <tr><td class="paramname">second</td><td>Индекс второго элемента для обмена.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section warning"><dt>Предупреждения</dt><dd>Функция не проверяет корректность индексов. Выход за пределы диапазона [0, 9] приводит к неопределённому поведению. </dd></dl>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="zadanie1_8cpp.html">zadanie1.cpp</a></li>
+    <li class="footer">Создано системой <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.18.0 </li>
+  </ul>
+</div>
+</body>
+</html>

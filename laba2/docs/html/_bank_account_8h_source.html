@@ -1,0 +1,213 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.18.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Лабораторная работа №2: Исходный файл BankAccount.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="codefolding.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Лабораторная работа №2
+   </div>
+   <div id="projectbrief">Моделирование банковского счёта</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.18.0 -->
+<script type="text/javascript">
+let searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', codefold.init);
+</script>
+<script type="application/json" id="doxygen-config">
+{
+  "relPath": "",
+  "generateTreeView": true,
+  "searchEngine": true,
+  "serverBasedSearch": false,
+  "disableIndex": false,
+  "dynamicMenus": true,
+  "fullSidebar": false
+}
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<div id="main-nav-mobile">
+<div class="sm sm-dox"><input id="main-menu-state" type="checkbox"/>
+<label class="main-menu-btn" for="main-menu-state">
+<span class="main-menu-btn-icon"></span> Toggle main menu visibility</label>
+<span id="searchBoxPos1"></span>
+</div>
+</div><!-- main-nav-mobile -->
+<div id="main-nav">
+  <ul class="sm sm-dox" id="main-menu">
+    <li id="searchBoxPos2">
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="Поиск" accesskey="S"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+    </li>
+  </ul>
+</div><!-- main-nav -->
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded',() => { initNavTree('_bank_account_8h_source.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Загрузка...</div>
+<div class="SRStatus" id="Searching">Поиск...</div>
+<div class="SRStatus" id="NoMatches">Не найдено</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">BankAccount.h</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="keyword">using namespace </span>std;</div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="keyword">enum class</span> AccountType</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>{</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>    Debit,      </div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    Salary,     </div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    Savings     </div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>};</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span></div>
+<div class="foldopen" id="foldopen00024" data-start="{" data-end="};">
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="class_bank_account.html">   24</a></span><span class="keyword">class </span><a class="code hl_function" href="class_bank_account.html#a9462b2d59a2daae5bb487493c9ebb0e9">BankAccount</a></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>{</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    <span class="keywordtype">string</span> owner;              </div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    <span class="keywordtype">string</span> accountNumber;      </div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    <span class="keywordtype">double</span> balance;            </div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    AccountType type;           </div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    <span class="keywordtype">bool</span> blocked;              </div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    <span class="keyword">static</span> <span class="keywordtype">int</span> objectCount;     </div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    <span class="keyword">static</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span> nextAccountNumber; </div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span></div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    <span class="keywordtype">void</span> validateOwner(<span class="keyword">const</span> <span class="keywordtype">string</span>&amp; owner) <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span></div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    <span class="keywordtype">void</span> validateAccountNumber(<span class="keyword">const</span> <span class="keywordtype">string</span>&amp; number) <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span></div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    <span class="keywordtype">void</span> validateBalance(<span class="keywordtype">double</span> balance) <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span></div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    <a class="code hl_function" href="class_bank_account.html#a9462b2d59a2daae5bb487493c9ebb0e9">BankAccount</a>();</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span></div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    <a class="code hl_function" href="class_bank_account.html#a9462b2d59a2daae5bb487493c9ebb0e9">BankAccount</a>(</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>        <span class="keyword">const</span> <span class="keywordtype">string</span>&amp; owner,</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>        <span class="keyword">const</span> <span class="keywordtype">string</span>&amp; accountNumber,</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>        <span class="keywordtype">double</span> initialBalance,</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>        AccountType type</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    );</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span></div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>    <a class="code hl_function" href="class_bank_account.html#a9462b2d59a2daae5bb487493c9ebb0e9">BankAccount</a>(</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>        <span class="keyword">const</span> <span class="keywordtype">string</span>&amp; owner,</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>        <span class="keywordtype">double</span> initialBalance,</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>        AccountType type</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>    );</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span></div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>    <a class="code hl_function" href="class_bank_account.html#a9462b2d59a2daae5bb487493c9ebb0e9">~BankAccount</a>();</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span></div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>    <span class="keywordtype">string</span> <a class="code hl_function" href="class_bank_account.html#a131496757c5e3e0e0ffb8004c58d1a37">getOwner</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span></div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>    <span class="keywordtype">string</span> <a class="code hl_function" href="class_bank_account.html#abb43b479b7da10b20660de004221676e">getAccountNumber</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span></div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>    <span class="keywordtype">double</span> <a class="code hl_function" href="class_bank_account.html#aeb202a68eff290686b9926ad386293be">getBalance</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span></div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>    AccountType <a class="code hl_function" href="class_bank_account.html#aaf429d00981c5a539be12a892c128603">getType</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span></div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="class_bank_account.html#a7e9b7f7c079dcfb5920196b8187978f2">isBlocked</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span></div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_bank_account.html#abd2e2f3e3dd634bf92ca1a53af0aec42">deposit</a>(<span class="keywordtype">double</span> amount);</div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span></div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="class_bank_account.html#ad99a7fe9718597bf978d595ceea0336d">withdraw</a>(<span class="keywordtype">double</span> amount);</div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span></div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_bank_account.html#a473e48e0bd7df584f7f31eae68f87b14">block</a>();</div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span></div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_bank_account.html#a791a76d36e65d5de4bec6661b9606d55">unblock</a>();</div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span></div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_bank_account.html#a431e6efc97c353d60aa0ff34074f7073">printInfo</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span></div>
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>    <span class="keyword">static</span> <span class="keywordtype">int</span> <a class="code hl_function" href="class_bank_account.html#a54bd5c347c0e8579ea70e6ab259cd616">getObjectCount</a>();</div>
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>};</div>
+</div>
+<div class="ttc" id="aclass_bank_account_html_a131496757c5e3e0e0ffb8004c58d1a37"><div class="ttname"><a href="class_bank_account.html#a131496757c5e3e0e0ffb8004c58d1a37">BankAccount::getOwner</a></div><div class="ttdeci">string getOwner() const</div><div class="ttdoc">Возвращает имя владельца.</div><div class="ttdef"><b>Определения</b> BankAccount.cpp:130</div></div>
+<div class="ttc" id="aclass_bank_account_html_a431e6efc97c353d60aa0ff34074f7073"><div class="ttname"><a href="class_bank_account.html#a431e6efc97c353d60aa0ff34074f7073">BankAccount::printInfo</a></div><div class="ttdeci">void printInfo() const</div><div class="ttdoc">Выводит информацию о банковском счёте.</div><div class="ttdef"><b>Определения</b> BankAccount.cpp:268</div></div>
+<div class="ttc" id="aclass_bank_account_html_a473e48e0bd7df584f7f31eae68f87b14"><div class="ttname"><a href="class_bank_account.html#a473e48e0bd7df584f7f31eae68f87b14">BankAccount::block</a></div><div class="ttdeci">void block()</div><div class="ttdoc">Блокирует банковский счёт.</div><div class="ttdef"><b>Определения</b> BankAccount.cpp:228</div></div>
+<div class="ttc" id="aclass_bank_account_html_a54bd5c347c0e8579ea70e6ab259cd616"><div class="ttname"><a href="class_bank_account.html#a54bd5c347c0e8579ea70e6ab259cd616">BankAccount::getObjectCount</a></div><div class="ttdeci">static int getObjectCount()</div><div class="ttdoc">Возвращает количество существующих объектов класса.</div><div class="ttdef"><b>Определения</b> BankAccount.cpp:299</div></div>
+<div class="ttc" id="aclass_bank_account_html_a791a76d36e65d5de4bec6661b9606d55"><div class="ttname"><a href="class_bank_account.html#a791a76d36e65d5de4bec6661b9606d55">BankAccount::unblock</a></div><div class="ttdeci">void unblock()</div><div class="ttdoc">Разблокирует банковский счёт.</div><div class="ttdef"><b>Определения</b> BankAccount.cpp:237</div></div>
+<div class="ttc" id="aclass_bank_account_html_a7e9b7f7c079dcfb5920196b8187978f2"><div class="ttname"><a href="class_bank_account.html#a7e9b7f7c079dcfb5920196b8187978f2">BankAccount::isBlocked</a></div><div class="ttdeci">bool isBlocked() const</div><div class="ttdoc">Проверяет, заблокирован ли счёт.</div><div class="ttdef"><b>Определения</b> BankAccount.cpp:166</div></div>
+<div class="ttc" id="aclass_bank_account_html_a9462b2d59a2daae5bb487493c9ebb0e9"><div class="ttname"><a href="class_bank_account.html#a9462b2d59a2daae5bb487493c9ebb0e9">BankAccount::BankAccount</a></div><div class="ttdeci">BankAccount()</div><div class="ttdoc">Создаёт банковский счёт со значениями по умолчанию.</div><div class="ttdef"><b>Определения</b> BankAccount.cpp:15</div></div>
+<div class="ttc" id="aclass_bank_account_html_aaf429d00981c5a539be12a892c128603"><div class="ttname"><a href="class_bank_account.html#aaf429d00981c5a539be12a892c128603">BankAccount::getType</a></div><div class="ttdeci">AccountType getType() const</div><div class="ttdoc">Возвращает тип счёта.</div><div class="ttdef"><b>Определения</b> BankAccount.cpp:157</div></div>
+<div class="ttc" id="aclass_bank_account_html_abb43b479b7da10b20660de004221676e"><div class="ttname"><a href="class_bank_account.html#abb43b479b7da10b20660de004221676e">BankAccount::getAccountNumber</a></div><div class="ttdeci">string getAccountNumber() const</div><div class="ttdoc">Возвращает номер счёта.</div><div class="ttdef"><b>Определения</b> BankAccount.cpp:139</div></div>
+<div class="ttc" id="aclass_bank_account_html_abd2e2f3e3dd634bf92ca1a53af0aec42"><div class="ttname"><a href="class_bank_account.html#abd2e2f3e3dd634bf92ca1a53af0aec42">BankAccount::deposit</a></div><div class="ttdeci">void deposit(double amount)</div><div class="ttdoc">Пополняет баланс счёта.</div><div class="ttdef"><b>Определения</b> BankAccount.cpp:175</div></div>
+<div class="ttc" id="aclass_bank_account_html_ad99a7fe9718597bf978d595ceea0336d"><div class="ttname"><a href="class_bank_account.html#ad99a7fe9718597bf978d595ceea0336d">BankAccount::withdraw</a></div><div class="ttdeci">bool withdraw(double amount)</div><div class="ttdoc">Снимает деньги со счёта.</div><div class="ttdef"><b>Определения</b> BankAccount.cpp:198</div></div>
+<div class="ttc" id="aclass_bank_account_html_aeb202a68eff290686b9926ad386293be"><div class="ttname"><a href="class_bank_account.html#aeb202a68eff290686b9926ad386293be">BankAccount::getBalance</a></div><div class="ttdeci">double getBalance() const</div><div class="ttdoc">Возвращает текущий баланс.</div><div class="ttdef"><b>Определения</b> BankAccount.cpp:148</div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><b>BankAccount.h</b></li>
+    <li class="footer">Создано системой <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.18.0 </li>
+  </ul>
+</div>
+</body>
+</html>

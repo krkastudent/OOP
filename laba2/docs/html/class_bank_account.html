@@ -1,0 +1,544 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.18.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Лабораторная работа №2: Класс BankAccount</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="codefolding.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Лабораторная работа №2
+   </div>
+   <div id="projectbrief">Моделирование банковского счёта</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.18.0 -->
+<script type="text/javascript">
+let searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', codefold.init);
+</script>
+<script type="application/json" id="doxygen-config">
+{
+  "relPath": "",
+  "generateTreeView": true,
+  "searchEngine": true,
+  "serverBasedSearch": false,
+  "disableIndex": false,
+  "dynamicMenus": true,
+  "fullSidebar": false
+}
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<div id="main-nav-mobile">
+<div class="sm sm-dox"><input id="main-menu-state" type="checkbox"/>
+<label class="main-menu-btn" for="main-menu-state">
+<span class="main-menu-btn-icon"></span> Toggle main menu visibility</label>
+<span id="searchBoxPos1"></span>
+</div>
+</div><!-- main-nav-mobile -->
+<div id="main-nav">
+  <ul class="sm sm-dox" id="main-menu">
+    <li id="searchBoxPos2">
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="Поиск" accesskey="S"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+    </li>
+  </ul>
+</div><!-- main-nav -->
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded',() => { initNavTree('class_bank_account.html','','class_bank_account-members'); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Загрузка...</div>
+<div class="SRStatus" id="Searching">Поиск...</div>
+<div class="SRStatus" id="NoMatches">Не найдено</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Класс BankAccount</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Класс, моделирующий банковский счёт.  
+ <a href="#details">Подробнее...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_bank_account_8h_source.html">BankAccount.h</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Открытые члены</h2></td></tr>
+<tr class="memitem:a9462b2d59a2daae5bb487493c9ebb0e9" id="r_a9462b2d59a2daae5bb487493c9ebb0e9"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="#a9462b2d59a2daae5bb487493c9ebb0e9">BankAccount</a> ()</td></tr>
+<tr class="memdesc:a9462b2d59a2daae5bb487493c9ebb0e9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Создаёт банковский счёт со значениями по умолчанию.  <br /></td></tr>
+<tr class="memitem:a75413ead627ab501f5706ceac5ca9b66" id="r_a75413ead627ab501f5706ceac5ca9b66"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="#a75413ead627ab501f5706ceac5ca9b66">BankAccount</a> (const string &amp;owner, const string &amp;accountNumber, double initialBalance, AccountType type)</td></tr>
+<tr class="memdesc:a75413ead627ab501f5706ceac5ca9b66"><td class="mdescLeft">&#160;</td><td class="mdescRight">Создаёт банковский счёт с заданными параметрами.  <br /></td></tr>
+<tr class="memitem:af8e2f3da885f97dbb6cb35f3b9a0997d" id="r_af8e2f3da885f97dbb6cb35f3b9a0997d"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="#af8e2f3da885f97dbb6cb35f3b9a0997d">BankAccount</a> (const string &amp;owner, double initialBalance, AccountType type)</td></tr>
+<tr class="memdesc:af8e2f3da885f97dbb6cb35f3b9a0997d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Создаёт банковский счёт с автоматическим номером.  <br /></td></tr>
+<tr class="memitem:af8ff84fe814689a9a6e74c5ae36761d8" id="r_af8ff84fe814689a9a6e74c5ae36761d8"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="#af8ff84fe814689a9a6e74c5ae36761d8">~BankAccount</a> ()</td></tr>
+<tr class="memdesc:af8ff84fe814689a9a6e74c5ae36761d8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Уничтожает объект банковского счёта.  <br /></td></tr>
+<tr class="memitem:a131496757c5e3e0e0ffb8004c58d1a37" id="r_a131496757c5e3e0e0ffb8004c58d1a37"><td class="memItemLeft">string&#160;</td><td class="memItemRight"><a class="el" href="#a131496757c5e3e0e0ffb8004c58d1a37">getOwner</a> () const</td></tr>
+<tr class="memdesc:a131496757c5e3e0e0ffb8004c58d1a37"><td class="mdescLeft">&#160;</td><td class="mdescRight">Возвращает имя владельца.  <br /></td></tr>
+<tr class="memitem:abb43b479b7da10b20660de004221676e" id="r_abb43b479b7da10b20660de004221676e"><td class="memItemLeft">string&#160;</td><td class="memItemRight"><a class="el" href="#abb43b479b7da10b20660de004221676e">getAccountNumber</a> () const</td></tr>
+<tr class="memdesc:abb43b479b7da10b20660de004221676e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Возвращает номер счёта.  <br /></td></tr>
+<tr class="memitem:aeb202a68eff290686b9926ad386293be" id="r_aeb202a68eff290686b9926ad386293be"><td class="memItemLeft">double&#160;</td><td class="memItemRight"><a class="el" href="#aeb202a68eff290686b9926ad386293be">getBalance</a> () const</td></tr>
+<tr class="memdesc:aeb202a68eff290686b9926ad386293be"><td class="mdescLeft">&#160;</td><td class="mdescRight">Возвращает текущий баланс.  <br /></td></tr>
+<tr class="memitem:aaf429d00981c5a539be12a892c128603" id="r_aaf429d00981c5a539be12a892c128603"><td class="memItemLeft">AccountType&#160;</td><td class="memItemRight"><a class="el" href="#aaf429d00981c5a539be12a892c128603">getType</a> () const</td></tr>
+<tr class="memdesc:aaf429d00981c5a539be12a892c128603"><td class="mdescLeft">&#160;</td><td class="mdescRight">Возвращает тип счёта.  <br /></td></tr>
+<tr class="memitem:a7e9b7f7c079dcfb5920196b8187978f2" id="r_a7e9b7f7c079dcfb5920196b8187978f2"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a7e9b7f7c079dcfb5920196b8187978f2">isBlocked</a> () const</td></tr>
+<tr class="memdesc:a7e9b7f7c079dcfb5920196b8187978f2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Проверяет, заблокирован ли счёт.  <br /></td></tr>
+<tr class="memitem:abd2e2f3e3dd634bf92ca1a53af0aec42" id="r_abd2e2f3e3dd634bf92ca1a53af0aec42"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#abd2e2f3e3dd634bf92ca1a53af0aec42">deposit</a> (double amount)</td></tr>
+<tr class="memdesc:abd2e2f3e3dd634bf92ca1a53af0aec42"><td class="mdescLeft">&#160;</td><td class="mdescRight">Пополняет баланс счёта.  <br /></td></tr>
+<tr class="memitem:ad99a7fe9718597bf978d595ceea0336d" id="r_ad99a7fe9718597bf978d595ceea0336d"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#ad99a7fe9718597bf978d595ceea0336d">withdraw</a> (double amount)</td></tr>
+<tr class="memdesc:ad99a7fe9718597bf978d595ceea0336d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Снимает деньги со счёта.  <br /></td></tr>
+<tr class="memitem:a473e48e0bd7df584f7f31eae68f87b14" id="r_a473e48e0bd7df584f7f31eae68f87b14"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a473e48e0bd7df584f7f31eae68f87b14">block</a> ()</td></tr>
+<tr class="memdesc:a473e48e0bd7df584f7f31eae68f87b14"><td class="mdescLeft">&#160;</td><td class="mdescRight">Блокирует банковский счёт.  <br /></td></tr>
+<tr class="memitem:a791a76d36e65d5de4bec6661b9606d55" id="r_a791a76d36e65d5de4bec6661b9606d55"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a791a76d36e65d5de4bec6661b9606d55">unblock</a> ()</td></tr>
+<tr class="memdesc:a791a76d36e65d5de4bec6661b9606d55"><td class="mdescLeft">&#160;</td><td class="mdescRight">Разблокирует банковский счёт.  <br /></td></tr>
+<tr class="memitem:a431e6efc97c353d60aa0ff34074f7073" id="r_a431e6efc97c353d60aa0ff34074f7073"><td class="memItemLeft"><a id="a431e6efc97c353d60aa0ff34074f7073" name="a431e6efc97c353d60aa0ff34074f7073"></a>
+void&#160;</td><td class="memItemRight"><b>printInfo</b> () const</td></tr>
+<tr class="memdesc:a431e6efc97c353d60aa0ff34074f7073"><td class="mdescLeft">&#160;</td><td class="mdescRight">Выводит информацию о банковском счёте. <br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pub-static-methods" class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
+Открытые статические члены</h2></td></tr>
+<tr class="memitem:a54bd5c347c0e8579ea70e6ab259cd616" id="r_a54bd5c347c0e8579ea70e6ab259cd616"><td class="memItemLeft">static int&#160;</td><td class="memItemRight"><a class="el" href="#a54bd5c347c0e8579ea70e6ab259cd616">getObjectCount</a> ()</td></tr>
+<tr class="memdesc:a54bd5c347c0e8579ea70e6ab259cd616"><td class="mdescLeft">&#160;</td><td class="mdescRight">Возвращает количество существующих объектов класса.  <br /></td></tr>
+</table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Подробное описание</h2>
+<div class="textblock"><p>Класс, моделирующий банковский счёт. </p>
+<p>Класс хранит информацию о владельце, номере счёта, текущем балансе, типе счёта и состоянии блокировки. </p>
+</div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Конструктор(ы)</h2>
+<a id="a9462b2d59a2daae5bb487493c9ebb0e9" name="a9462b2d59a2daae5bb487493c9ebb0e9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9462b2d59a2daae5bb487493c9ebb0e9">&#9670;&#160;</a></span>BankAccount() <span class="overload">[1/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">BankAccount::BankAccount </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Создаёт банковский счёт со значениями по умолчанию. </p>
+<p>Конструктор без параметров. </p>
+
+</div>
+</div>
+<a id="a75413ead627ab501f5706ceac5ca9b66" name="a75413ead627ab501f5706ceac5ca9b66"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a75413ead627ab501f5706ceac5ca9b66">&#9670;&#160;</a></span>BankAccount() <span class="overload">[2/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">BankAccount::BankAccount </td>
+          <td>(</td>
+          <td class="paramtype">const string &amp;</td>          <td class="paramname"><span class="paramname"><em>owner</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const string &amp;</td>          <td class="paramname"><span class="paramname"><em>accountNumber</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double</td>          <td class="paramname"><span class="paramname"><em>initialBalance</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">AccountType</td>          <td class="paramname"><span class="paramname"><em>type</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Создаёт банковский счёт с заданными параметрами. </p>
+<p>Полный параметризованный конструктор.</p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">owner</td><td>Имя владельца. </td></tr>
+    <tr><td class="paramname">accountNumber</td><td>Номер счёта. </td></tr>
+    <tr><td class="paramname">initialBalance</td><td>Начальный баланс. </td></tr>
+    <tr><td class="paramname">type</td><td>Тип счёта. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="af8e2f3da885f97dbb6cb35f3b9a0997d" name="af8e2f3da885f97dbb6cb35f3b9a0997d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af8e2f3da885f97dbb6cb35f3b9a0997d">&#9670;&#160;</a></span>BankAccount() <span class="overload">[3/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">BankAccount::BankAccount </td>
+          <td>(</td>
+          <td class="paramtype">const string &amp;</td>          <td class="paramname"><span class="paramname"><em>owner</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double</td>          <td class="paramname"><span class="paramname"><em>initialBalance</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">AccountType</td>          <td class="paramname"><span class="paramname"><em>type</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Создаёт банковский счёт с автоматическим номером. </p>
+<p>Сокращённый параметризованный конструктор.</p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">owner</td><td>Имя владельца. </td></tr>
+    <tr><td class="paramname">initialBalance</td><td>Начальный баланс. </td></tr>
+    <tr><td class="paramname">type</td><td>Тип счёта. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="af8ff84fe814689a9a6e74c5ae36761d8" name="af8ff84fe814689a9a6e74c5ae36761d8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af8ff84fe814689a9a6e74c5ae36761d8">&#9670;&#160;</a></span>~BankAccount()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">BankAccount::~BankAccount </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Уничтожает объект банковского счёта. </p>
+<p>Деструктор объекта. </p>
+
+</div>
+</div>
+<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Методы</h2>
+<a id="a473e48e0bd7df584f7f31eae68f87b14" name="a473e48e0bd7df584f7f31eae68f87b14"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a473e48e0bd7df584f7f31eae68f87b14">&#9670;&#160;</a></span>block()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void BankAccount::block </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Блокирует банковский счёт. </p>
+<p>Блокирует счёт. </p>
+
+</div>
+</div>
+<a id="abd2e2f3e3dd634bf92ca1a53af0aec42" name="abd2e2f3e3dd634bf92ca1a53af0aec42"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abd2e2f3e3dd634bf92ca1a53af0aec42">&#9670;&#160;</a></span>deposit()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void BankAccount::deposit </td>
+          <td>(</td>
+          <td class="paramtype">double</td>          <td class="paramname"><span class="paramname"><em>amount</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Пополняет баланс счёта. </p>
+<p>Пополняет счёт.</p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">amount</td><td>Сумма пополнения. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="exception"><dt>Исключения</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">invalid_argument</td><td>Если сумма меньше или равна нулю. </td></tr>
+    <tr><td class="paramname">runtime_error</td><td>Если счёт заблокирован. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="abb43b479b7da10b20660de004221676e" name="abb43b479b7da10b20660de004221676e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abb43b479b7da10b20660de004221676e">&#9670;&#160;</a></span>getAccountNumber()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">string BankAccount::getAccountNumber </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Возвращает номер счёта. </p>
+<dl class="section return"><dt>Возвращает</dt><dd>Номер счёта. </dd></dl>
+
+</div>
+</div>
+<a id="aeb202a68eff290686b9926ad386293be" name="aeb202a68eff290686b9926ad386293be"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeb202a68eff290686b9926ad386293be">&#9670;&#160;</a></span>getBalance()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double BankAccount::getBalance </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Возвращает текущий баланс. </p>
+<p>Возвращает баланс.</p>
+<dl class="section return"><dt>Возвращает</dt><dd>Баланс счёта. </dd></dl>
+
+</div>
+</div>
+<a id="a54bd5c347c0e8579ea70e6ab259cd616" name="a54bd5c347c0e8579ea70e6ab259cd616"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a54bd5c347c0e8579ea70e6ab259cd616">&#9670;&#160;</a></span>getObjectCount()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int BankAccount::getObjectCount </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Возвращает количество существующих объектов класса. </p>
+<p>Возвращает количество существующих объектов.</p>
+<dl class="section return"><dt>Возвращает</dt><dd>Количество объектов. </dd></dl>
+
+</div>
+</div>
+<a id="a131496757c5e3e0e0ffb8004c58d1a37" name="a131496757c5e3e0e0ffb8004c58d1a37"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a131496757c5e3e0e0ffb8004c58d1a37">&#9670;&#160;</a></span>getOwner()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">string BankAccount::getOwner </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Возвращает имя владельца. </p>
+<dl class="section return"><dt>Возвращает</dt><dd>Имя владельца. </dd></dl>
+
+</div>
+</div>
+<a id="aaf429d00981c5a539be12a892c128603" name="aaf429d00981c5a539be12a892c128603"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaf429d00981c5a539be12a892c128603">&#9670;&#160;</a></span>getType()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">AccountType BankAccount::getType </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Возвращает тип счёта. </p>
+<dl class="section return"><dt>Возвращает</dt><dd>Тип счёта. </dd></dl>
+
+</div>
+</div>
+<a id="a7e9b7f7c079dcfb5920196b8187978f2" name="a7e9b7f7c079dcfb5920196b8187978f2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7e9b7f7c079dcfb5920196b8187978f2">&#9670;&#160;</a></span>isBlocked()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool BankAccount::isBlocked </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Проверяет, заблокирован ли счёт. </p>
+<p>Проверяет блокировку счёта.</p>
+<dl class="section return"><dt>Возвращает</dt><dd>true, если счёт заблокирован, иначе false. </dd></dl>
+
+</div>
+</div>
+<a id="a791a76d36e65d5de4bec6661b9606d55" name="a791a76d36e65d5de4bec6661b9606d55"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a791a76d36e65d5de4bec6661b9606d55">&#9670;&#160;</a></span>unblock()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void BankAccount::unblock </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Разблокирует банковский счёт. </p>
+<p>Разблокирует счёт. </p>
+
+</div>
+</div>
+<a id="ad99a7fe9718597bf978d595ceea0336d" name="ad99a7fe9718597bf978d595ceea0336d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad99a7fe9718597bf978d595ceea0336d">&#9670;&#160;</a></span>withdraw()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool BankAccount::withdraw </td>
+          <td>(</td>
+          <td class="paramtype">double</td>          <td class="paramname"><span class="paramname"><em>amount</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Снимает деньги со счёта. </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">amount</td><td>Сумма снятия. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>true, если операция выполнена успешно. </dd>
+<dd>
+false, если недостаточно средств. </dd></dl>
+<dl class="exception"><dt>Исключения</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">invalid_argument</td><td>Если сумма меньше или равна нулю. </td></tr>
+    <tr><td class="paramname">runtime_error</td><td>Если счёт заблокирован. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<hr/>Объявления и описания членов классов находятся в файлах:<ul>
+<li><a class="el" href="_bank_account_8h_source.html">BankAccount.h</a></li>
+<li><b>BankAccount.cpp</b></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="class_bank_account.html">BankAccount</a></li>
+    <li class="footer">Создано системой <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.18.0 </li>
+  </ul>
+</div>
+</body>
+</html>

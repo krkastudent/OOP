@@ -71,6 +71,50 @@ public:
         return old;
     }
 
+    Money& operator+=(const Money& other) {
+        kopecks += other.kopecks;
+        return *this;
+    }
+
+    Money& operator-=(const Money& other) {
+        kopecks -= other.kopecks;
+        return *this;
+    }
+
+    Money& operator*=(int number) {
+        kopecks *= number;
+        return *this;
+    }
+
+    Money& operator/=(int number) {
+        if (number == 0)
+            throw invalid_argument("Деление на ноль");
+
+        kopecks /= number;
+        return *this;
+    }
+
+    friend Money operator+(Money left, const Money& right) {
+        left += right;
+        return left;
+    }
+
+    friend Money operator-(Money left, const Money& right) {
+        left -= right;
+        return left;
+    }
+
+    friend Money operator*(Money left, int number) {
+        left *= number;
+        return left;
+    }
+
+    friend Money operator/(Money left, int number) {
+        left /= number;
+        return left;
+    }
+}
+
 int main(){
 
 }

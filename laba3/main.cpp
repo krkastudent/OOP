@@ -113,7 +113,37 @@ public:
         left /= number;
         return left;
     }
-}
+
+    bool operator<(const Money& other) const {
+        return kopecks < other.kopecks;
+    }
+
+    bool operator>(const Money& other) const {
+        return kopecks > other.kopecks;
+    }
+
+    bool operator<=(const Money& other) const {
+        return kopecks <= other.kopecks;
+    }
+
+    bool operator>=(const Money& other) const {
+        return kopecks >= other.kopecks;
+    }
+
+    bool operator==(const Money& other) const {
+        return kopecks == other.kopecks;
+    }
+
+    bool operator!=(const Money& other) const {
+        return kopecks != other.kopecks;
+    }
+
+    ~Money() {
+        cout << "Объект Money уничтожен" << endl;
+    }
+};
+int Money::totalCreated = 0;
+
 
 int main(){
 

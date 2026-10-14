@@ -144,6 +144,85 @@ public:
 };
 int Money::totalCreated = 0;
 
+class BankAccount {
+private:
+    string owner;
+    Money balance;
+    vector<string> history;
+
+public:
+    BankAccount(string name, Money initialBalance)
+        : owner(name), balance(initialBalance) {
+        history.push_back("Открытие счёта");
+    }
+
+    void deposit(const Money& amount) {
+        if (amount <= Money()) {
+            cout << "Сумма должна быть положительной\n";
+            return;
+        }
+
+        balance += amount;
+        history.push_back("Зачисление");
+        cout << "Деньги зачислены\n";
+    }
+
+    void withdraw(const Money& amount) {
+        if (amount <= Money()) {
+            cout << "Сумма должна быть положительной\n";
+            return;
+        }
+
+        if (amount > balance) {
+            cout << "Недостаточно средств\n";
+            return;
+        }
+
+        balance -= amount;
+        history.push_back("Расход");
+        cout << "Деньги списаны\n";
+    }
+
+    void transfer(BankAccount& recipient, const Money& amount) {
+        if (this == &recipient) {
+            cout << "Нельзя перевести деньги самому себе\n";
+            return;
+        }
+
+        if (amount <= Money()) {
+            cout << "Сумма должна быть положительной\n";
+            return;
+        }
+
+        if (amount > balance) {
+            cout << "Недостаточно средств для перевода\n";
+            return;
+        }
+
+        balance -= amount;
+        recipient.balance += amount;
+
+        history.push_back("Перевод другому клиенту");
+        recipient.history.push_back("Получение перевода");
+
+        cout << "Перевод выполнен\n";
+    }
+
+    void showBalance() const {
+        cout << owner << ": ";
+        balance.print();
+        cout << '\n';
+    }
+
+    void showHistory() const {
+        cout << "История операций (" << owner << "):\n";
+
+        for (const string& operation : history) {
+            cout << "- " << operation << '\n';
+        }
+    }
+};
+
 
 int main(){
 

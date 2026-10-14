@@ -1,0 +1,73 @@
+@startuml
+skinparam classAttributeIconSize 0
+skinparam linetype ortho
+skinparam nodesep 80
+skinparam ranksep 80
+
+class Money {
+    - kopecks : long long
+    - accessCount : mutable int = 0
+    - {static} totalCreated : int
+    --
+    + Money()
+    + Money(rubles : long long, cents : int)
+    + Money(cents : long long) <<explicit>>
+    + getKopecks() : long long
+    + getAccessCount() : int
+    + print() : void
+    + {static} getTotalCreated() : int
+    + operator++() : Money&
+    + operator++(int) : Money
+    + operator--() : Money&
+    + operator--(int) : Money
+    + operator+=(other : const Money&) : Money&
+    + operator-=(other : const Money&) : Money&
+    + operator*=(number : int) : Money&
+    + operator/=(number : int) : Money&
+    + operator<(other : const Money&) : bool
+    + operator>(other : const Money&) : bool
+    + operator<=(other : const Money&) : bool
+    + operator>=(other : const Money&) : bool
+    + operator==(other : const Money&) : bool
+    + operator!=(other : const Money&) : bool
+    + ~Money()
+    --
+    {static} friend operator+(left : Money, right : const Money&) : Money
+    {static} friend operator-(left : Money, right : const Money&) : Money
+    {static} friend operator*(left : Money, number : int) : Money
+    {static} friend operator/(left : Money, number : int) : Money
+}
+
+class BankAccount {
+    - owner : string
+    - balance : Money
+    - history : vector<string>
+    --
+    + BankAccount(name : string, initialBalance : Money)
+    + deposit(amount : const Money&) : void
+    + withdraw(amount : const Money&) : void
+    + transfer(recipient : BankAccount&, amount : const Money&) : void
+    + showBalance() : void
+    + showHistory() : void
+}
+
+BankAccount *-- "1" Money : balance
+BankAccount o-- "0..*" string : history
+
+note right of Money::accessCount
+  mutable поле —
+  изменяется даже
+  у константных объектов
+end note
+
+note right of Money::totalCreated
+  статический счётчик
+  всех созданных объектов
+end note
+
+note bottom of BankAccount
+  Композиция: balance является
+  неотъемлемой частью счёта
+end note
+
+@enduml

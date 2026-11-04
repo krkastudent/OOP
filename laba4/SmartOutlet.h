@@ -23,11 +23,13 @@ public:
      * @throws invalid_argument Если мощность недопустима.
      */
     SmartOutlet(const string& name, double power, double voltage);
+
     /**
      * @brief Создаёт независимую копию состояния и параметров.
      * @param other Копируемый объект.
      */
     SmartOutlet(const SmartOutlet& other);
+
     /**
      * @brief Присваивает состояние и параметры другого объекта.
      * @param other Объект-источник.
@@ -35,16 +37,19 @@ public:
      * @details Самоприсваивание сохраняет объект без изменений.
      */
     SmartOutlet& operator=(const SmartOutlet& other);
+
     /**
      * @brief Реализует интерфейс датчика напряжения.
      * @return Сохранённое входное напряжение в вольтах, в том числе при выключенном реле.
      */
     double getCurrentVoltage() const override;
+
     /**
      * @brief Обновляет показание датчика.
      * @param value Входное напряжение в вольтах.
      */
     void setVoltage(double value);
+
     /**
      * @brief Формирует строку с типом, состоянием и параметрами устройства.
      * @return Строка состояния.

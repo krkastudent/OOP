@@ -10,13 +10,21 @@ using namespace std;
 
 double PoweredDevice::totalEnergyConsumed = 0.0;
 
-PoweredDevice::PoweredDevice(const string& name, double powerConsumption): SmartDevice(name), powerConsumption(powerConsumption), sessionPower(0.0) {
+PoweredDevice::PoweredDevice(const string& name, double powerConsumption)
+    : SmartDevice(name),
+      powerConsumption(powerConsumption),
+      sessionPower(0.0) {
     if (!isfinite(powerConsumption) || powerConsumption <= 0) {
         throw invalid_argument("Мощность должна быть положительным конечным числом");
     }
 }
 
-PoweredDevice::PoweredDevice(const PoweredDevice& other): SmartDevice(other), powerConsumption(other.powerConsumption), started(chrono::steady_clock::now()), sessionPower(other.sessionPower) {}
+PoweredDevice::PoweredDevice(const PoweredDevice& other)
+    : SmartDevice(other),
+      powerConsumption(other.powerConsumption),
+      started(chrono::steady_clock::now()),
+      sessionPower(other.sessionPower) {
+}
 
 PoweredDevice& PoweredDevice::operator=(const PoweredDevice& other) {
     if (this != &other) {
@@ -26,10 +34,13 @@ PoweredDevice& PoweredDevice::operator=(const PoweredDevice& other) {
         started = chrono::steady_clock::now();
         sessionPower = other.sessionPower;
     }
+
     return *this;
 }
 
-PoweredDevice::~PoweredDevice() { turnOff(); }
+PoweredDevice::~PoweredDevice() {
+    turnOff();
+}
 
 void PoweredDevice::turnOn() {
     if (!on) {
@@ -41,11 +52,17 @@ void PoweredDevice::turnOn() {
 
 void PoweredDevice::turnOff() {
     if (on) {
-        const double seconds = chrono::duration<double>(chrono::steady_clock::now() - started).count();
+        const double seconds =
+            chrono::duration<double>(chrono::steady_clock::now() - started).count();
         totalEnergyConsumed += sessionPower * seconds / 3600000.0;
         on = false;
     }
 }
 
-double PoweredDevice::getPowerUsage() const { return on ? powerConsumption : 0.0; }
-double PoweredDevice::getTotalEnergyConsumed() { return totalEnergyConsumed; }
+double PoweredDevice::getPowerUsage() const {
+    return on ? powerConsumption : 0.0;
+}
+
+double PoweredDevice::getTotalEnergyConsumed() {
+    return totalEnergyConsumed;
+}

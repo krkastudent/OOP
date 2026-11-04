@@ -15,17 +15,20 @@ using namespace std;
 class SmartDevice {
 protected:
     string name; ///< Имя устройства; строка владеет своим содержимым.
-    bool on; ///< Состояние питания: true — включено.
+    bool on;     ///< Состояние питания: true - включено.
+
     /**
      * @brief Создаёт выключенное устройство.
      * @param name Имя устройства.
      */
     SmartDevice(const string& name);
+
     /**
      * @brief Создаёт независимую копию состояния и параметров.
      * @param other Копируемый объект.
      */
     SmartDevice(const SmartDevice& other);
+
     /**
      * @brief Присваивает состояние и параметры другого объекта.
      * @param other Объект-источник.
@@ -39,24 +42,29 @@ public:
      * @brief Обеспечивает удаление наследников через базовый указатель.
      */
     virtual ~SmartDevice();
+
     /**
      * @brief Включает устройство.
      */
     virtual void turnOn() = 0;
+
     /**
      * @brief Выключает устройство.
      */
     virtual void turnOff() = 0;
+
     /**
      * @brief Формирует строку с типом, состоянием и параметрами устройства.
      * @return Строка состояния.
      */
     virtual string getStatus() const = 0;
+
     /**
      * @brief Проверяет состояние питания.
      * @return true, если устройство включено; иначе false.
      */
     bool isOn() const;
+
     /**
      * @brief Выводит имя и полиморфное описание устройства.
      * @param out Поток вывода.

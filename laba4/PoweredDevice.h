@@ -7,6 +7,7 @@
 #include <chrono>
 
 using namespace std;
+using namespace std::chrono;
 
 /**
  * @brief Абстрактное устройство с питанием: второй уровень иерархии.
@@ -43,7 +44,7 @@ protected:
     PoweredDevice& operator=(const PoweredDevice& other);
 
 private:
-    chrono::steady_clock::time_point started; ///< Начало текущего интервала работы.
+    steady_clock::time_point started; ///< Начало текущего интервала работы.
     double sessionPower;                      ///< Мощность в ваттах, зафиксированная при включении.
     static double totalEnergyConsumed;        ///< Общий учтённый расход в кВт·ч для всех устройств.
 

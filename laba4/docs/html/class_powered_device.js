@@ -10,6 +10,6 @@ var class_powered_device =
     [ "turnOn", "class_powered_device.html#aa8c4cf167828ac91ec7bebf355425e9c", null ],
     [ "powerConsumption", "class_powered_device.html#ad082734c7e8c5faa47be5fc5c54d83f8", null ],
     [ "sessionPower", "class_powered_device.html#a47e54110796ab2d61422e26ca0077548", null ],
-    [ "started", "class_powered_device.html#a5f19f27240d079a42666817a4b9d1ab8", null ],
+    [ "started", "class_powered_device.html#a8f9e902ecf49ca322e953a9692e4a90f", null ],
     [ "totalEnergyConsumed", "class_powered_device.html#ac9c8bf17e14879bc4be17ca859550f4e", null ]
 ];

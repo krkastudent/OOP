@@ -35,6 +35,7 @@
 #include <thread>
 
 using namespace std;
+using namespace std::chrono;
 
 /**
  * @brief Загружает десять устройств и выполняет проверки задания.
@@ -59,7 +60,7 @@ int main() {
         int thermostats = 0;
         int outlets = 0;
 
-        for (auto& device : devices) {
+        for (unique_ptr<SmartDevice>& device : devices) {
             string type;
             string name;
             double power;
@@ -112,31 +113,35 @@ int main() {
         // Полиморфизм и общий расход за фактическое время между включением и выключением.
         const double before = PoweredDevice::getTotalEnergyConsumed();
         double watts = 0;
-        const auto firstOn = chrono::steady_clock::now();
+        const steady_clock::time_point firstOn = steady_clock::now();
 
-        for (auto& device : devices) {
+        for (unique_ptr<SmartDevice>& device : devices) {
             device->turnOn();
-            watts += dynamic_cast<PoweredDevice&>(*device).getPowerUsage();
+            PoweredDevice& powered = dynamic_cast<PoweredDevice&>(*device);
+            watts += powered.getPowerUsage();
         }
 
-        const auto lastOn = chrono::steady_clock::now();
-        this_thread::sleep_for(chrono::milliseconds(20));
-        const auto firstOff = chrono::steady_clock::now();
+        const steady_clock::time_point lastOn = steady_clock::now();
+        this_thread::sleep_for(milliseconds(20));
+        const steady_clock::time_point firstOff = steady_clock::now();
 
-        for (auto& device : devices) {
+        for (unique_ptr<SmartDevice>& device : devices) {
             device->turnOff();
         }
 
-        const auto lastOff = chrono::steady_clock::now();
+        const steady_clock::time_point lastOff = steady_clock::now();
         const double energy = PoweredDevice::getTotalEnergyConsumed() - before;
-        const double minimum =
-            watts * chrono::duration<double>(firstOff - lastOn).count() / 3600000;
-        const double maximum =
-            watts * chrono::duration<double>(lastOff - firstOn).count() / 3600000;
+        const duration<double> shortestInterval = firstOff - lastOn;
+        const duration<double> longestInterval = lastOff - firstOn;
+        const double minimumSeconds = shortestInterval.count();
+        const double maximumSeconds = longestInterval.count();
+
+        const double minimum = watts * minimumSeconds / 3600000;
+        const double maximum = watts * maximumSeconds / 3600000;
         assert(energy >= minimum - 1e-12 && energy <= maximum + 1e-12 && energy > 0);
         const double after = PoweredDevice::getTotalEnergyConsumed();
 
-        for (auto& device : devices) {
+        for (unique_ptr<SmartDevice>& device : devices) {
             device->turnOff();
         }
 
@@ -144,7 +149,7 @@ int main() {
         cout << "Потреблено энергии: " << energy << " кВт·ч\n";
 
         // Копирование и присваивание лампы: состояние и все параметры сохраняются.
-        auto& bulb = dynamic_cast<LightBulb&>(*devices[0]);
+        LightBulb& bulb = dynamic_cast<LightBulb&>(*devices[0]);
         bulb.turnOn();
 
         const string bulbState = bulb.getStatus();
@@ -164,7 +169,7 @@ int main() {
         bulbCopy.turnOff();
         bulbAssigned.turnOff();
 
-        auto& thermostat = dynamic_cast<Thermostat&>(*devices[4]);
+        Thermostat& thermostat = dynamic_cast<Thermostat&>(*devices[4]);
         thermostat.turnOn();
 
         const string thermostatState = thermostat.getStatus();
@@ -183,7 +188,7 @@ int main() {
         thermostatCopy.turnOff();
         thermostatAssigned.turnOff();
 
-        auto& outlet = dynamic_cast<SmartOutlet&>(*devices[7]);
+        SmartOutlet& outlet = dynamic_cast<SmartOutlet&>(*devices[7]);
         outlet.turnOn();
 
         assert(outlet.getPowerUsage() == 200.0);
@@ -203,8 +208,10 @@ int main() {
         outletAssigned.turnOff();
 
         // Вызов через второй базовый класс розетки - интерфейс ISensor.
-        for (auto& device : devices) {
-            if (auto* sensor = dynamic_cast<ISensor*>(device.get())) {
+        for (unique_ptr<SmartDevice>& device : devices) {
+            ISensor* sensor = dynamic_cast<ISensor*>(device.get());
+
+            if (sensor != nullptr) {
                 assert(sensor->getCurrentVoltage() > 0);
                 cout << "Напряжение: " << sensor->getCurrentVoltage() << " В\n";
             }

@@ -7,6 +7,7 @@
 #include <stdexcept>
 
 using namespace std;
+using namespace std::chrono;
 
 double PoweredDevice::totalEnergyConsumed = 0.0;
 
@@ -22,7 +23,7 @@ PoweredDevice::PoweredDevice(const string& name, double powerConsumption)
 PoweredDevice::PoweredDevice(const PoweredDevice& other)
     : SmartDevice(other),
       powerConsumption(other.powerConsumption),
-      started(chrono::steady_clock::now()),
+      started(steady_clock::now()),
       sessionPower(other.sessionPower) {
 }
 
@@ -31,7 +32,7 @@ PoweredDevice& PoweredDevice::operator=(const PoweredDevice& other) {
         turnOff();
         SmartDevice::operator=(other);
         powerConsumption = other.powerConsumption;
-        started = chrono::steady_clock::now();
+        started = steady_clock::now();
         sessionPower = other.sessionPower;
     }
 
@@ -45,16 +46,19 @@ PoweredDevice::~PoweredDevice() {
 void PoweredDevice::turnOn() {
     if (!on) {
         on = true;
-        started = chrono::steady_clock::now();
+        started = steady_clock::now();
         sessionPower = getPowerUsage();
     }
 }
 
 void PoweredDevice::turnOff() {
     if (on) {
-        const double seconds =
-            chrono::duration<double>(chrono::steady_clock::now() - started).count();
-        totalEnergyConsumed += sessionPower * seconds / 3600000.0;
+        const steady_clock::time_point now = steady_clock::now();
+        const duration<double> elapsed = now - started;
+        const double seconds = elapsed.count();
+
+        const double energy = sessionPower * seconds / 3600000.0;
+        totalEnergyConsumed += energy;
         on = false;
     }
 }

@@ -1,0 +1,441 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.18.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Лабораторная работа №4 — Устройства умного дома: Класс Thermostat</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="codefolding.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Лабораторная работа №4 — Устройства умного дома
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.18.0 -->
+<script type="text/javascript">
+let searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', codefold.init);
+</script>
+<script type="application/json" id="doxygen-config">
+{
+  "relPath": "",
+  "generateTreeView": true,
+  "searchEngine": true,
+  "serverBasedSearch": false,
+  "disableIndex": false,
+  "dynamicMenus": true,
+  "fullSidebar": false
+}
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<div id="main-nav-mobile">
+<div class="sm sm-dox"><input id="main-menu-state" type="checkbox"/>
+<label class="main-menu-btn" for="main-menu-state">
+<span class="main-menu-btn-icon"></span> Toggle main menu visibility</label>
+<span id="searchBoxPos1"></span>
+</div>
+</div><!-- main-nav-mobile -->
+<div id="main-nav">
+  <ul class="sm sm-dox" id="main-menu">
+    <li id="searchBoxPos2">
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="Поиск" accesskey="S"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+    </li>
+  </ul>
+</div><!-- main-nav -->
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded',() => { initNavTree('class_thermostat.html','','class_thermostat-members'); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Загрузка...</div>
+<div class="SRStatus" id="Searching">Поиск...</div>
+<div class="SRStatus" id="NoMatches">Не найдено</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Класс Thermostat</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Умный термостат с температурой и режимом.  
+ <a href="#details">Подробнее...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_thermostat_8h_source.html">Thermostat.h</a>&gt;</code></p>
+<div class="dynheader">
+Граф наследования:Thermostat:</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="class_thermostat.png" usemap="#Thermostat_map" alt=""/>
+  <map id="Thermostat_map" name="Thermostat_map">
+<area href="class_powered_device.html" title="Абстрактное устройство с питанием: второй уровень иерархии." alt="PoweredDevice" shape="rect" coords="0,56,102,80"/>
+<area href="class_smart_device.html" title="Абстрактное устройство умного дома: первый уровень иерархии." alt="SmartDevice" shape="rect" coords="0,0,102,24"/>
+  </map>
+</div></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Открытые члены</h2></td></tr>
+<tr class="memitem:a24e5f3baadd183b8fe91b0b311beedbe" id="r_a24e5f3baadd183b8fe91b0b311beedbe"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="#a24e5f3baadd183b8fe91b0b311beedbe">Thermostat</a> (const string &amp;name, double power, double temperature, const string &amp;mode)</td></tr>
+<tr class="memdesc:a24e5f3baadd183b8fe91b0b311beedbe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Создаёт выключенный термостат.  <br /></td></tr>
+<tr class="memitem:ac1bcbc798fa2560e154c9d3c97c1782e" id="r_ac1bcbc798fa2560e154c9d3c97c1782e"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="#ac1bcbc798fa2560e154c9d3c97c1782e">Thermostat</a> (const <a class="el" href="class_thermostat.html">Thermostat</a> &amp;other)</td></tr>
+<tr class="memdesc:ac1bcbc798fa2560e154c9d3c97c1782e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Создаёт независимую копию состояния и параметров.  <br /></td></tr>
+<tr class="memitem:a41681c3c02a6e0771015ff2a73b11b60" id="r_a41681c3c02a6e0771015ff2a73b11b60"><td class="memItemLeft"><a class="el" href="class_thermostat.html">Thermostat</a> &amp;&#160;</td><td class="memItemRight"><a class="el" href="#a41681c3c02a6e0771015ff2a73b11b60">operator=</a> (const <a class="el" href="class_thermostat.html">Thermostat</a> &amp;other)</td></tr>
+<tr class="memdesc:a41681c3c02a6e0771015ff2a73b11b60"><td class="mdescLeft">&#160;</td><td class="mdescRight">Присваивает состояние и параметры другого объекта.  <br /></td></tr>
+<tr class="memitem:a70b2169a00b790a352cc4fa096c2c0f8" id="r_a70b2169a00b790a352cc4fa096c2c0f8"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a70b2169a00b790a352cc4fa096c2c0f8">setTemperature</a> (double value)</td></tr>
+<tr class="memdesc:a70b2169a00b790a352cc4fa096c2c0f8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Изменяет заданную температуру.  <br /></td></tr>
+<tr class="memitem:a62f759c79821ea3d111c2fcc9edeb0b7" id="r_a62f759c79821ea3d111c2fcc9edeb0b7"><td class="memItemLeft">string&#160;</td><td class="memItemRight"><a class="el" href="#a62f759c79821ea3d111c2fcc9edeb0b7">getStatus</a> () const override</td></tr>
+<tr class="memdesc:a62f759c79821ea3d111c2fcc9edeb0b7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Формирует строку с типом, состоянием и параметрами устройства.  <br /></td></tr>
+<tr class="inherit_header pub_methods_class_powered_device"><td colspan="2">Открытые члены унаследованные от <a class="el" href="class_powered_device.html">PoweredDevice</a></td></tr>
+<tr class="memitem:adf08cd674266f0e53acc9aad2b930755 pub_methods_class_powered_device" id="r_adf08cd674266f0e53acc9aad2b930755"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="class_powered_device.html#adf08cd674266f0e53acc9aad2b930755">~PoweredDevice</a> () override</td></tr>
+<tr class="memdesc:adf08cd674266f0e53acc9aad2b930755 pub_methods_class_powered_device"><td class="mdescLeft">&#160;</td><td class="mdescRight">Учитывает оставшийся расход при уничтожении устройства.  <br /></td></tr>
+<tr class="memitem:aa8c4cf167828ac91ec7bebf355425e9c pub_methods_class_powered_device" id="r_aa8c4cf167828ac91ec7bebf355425e9c"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="class_powered_device.html#aa8c4cf167828ac91ec7bebf355425e9c">turnOn</a> () override</td></tr>
+<tr class="memdesc:aa8c4cf167828ac91ec7bebf355425e9c pub_methods_class_powered_device"><td class="mdescLeft">&#160;</td><td class="mdescRight">Включает устройство и запоминает время и текущую мощность.  <br /></td></tr>
+<tr class="memitem:a6ad02211ac80162283ee659dc6e0279e pub_methods_class_powered_device" id="r_a6ad02211ac80162283ee659dc6e0279e"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="class_powered_device.html#a6ad02211ac80162283ee659dc6e0279e">turnOff</a> () override</td></tr>
+<tr class="memdesc:a6ad02211ac80162283ee659dc6e0279e pub_methods_class_powered_device"><td class="mdescLeft">&#160;</td><td class="mdescRight">Выключает устройство и добавляет расход в общий счётчик.  <br /></td></tr>
+<tr class="memitem:a5d863623d2d83ba6a532fadb00c65e08 pub_methods_class_powered_device" id="r_a5d863623d2d83ba6a532fadb00c65e08"><td class="memItemLeft">virtual double&#160;</td><td class="memItemRight"><a class="el" href="class_powered_device.html#a5d863623d2d83ba6a532fadb00c65e08">getPowerUsage</a> () const</td></tr>
+<tr class="memdesc:a5d863623d2d83ba6a532fadb00c65e08 pub_methods_class_powered_device"><td class="mdescLeft">&#160;</td><td class="mdescRight">Возвращает мощность по умолчанию.  <br /></td></tr>
+<tr class="inherit_header pub_methods_class_smart_device"><td colspan="2">Открытые члены унаследованные от <a class="el" href="class_smart_device.html">SmartDevice</a></td></tr>
+<tr class="memitem:adf660b3efc39041ff216a1fe94d535b2 pub_methods_class_smart_device" id="r_adf660b3efc39041ff216a1fe94d535b2"><td class="memItemLeft">
+virtual&#160;</td><td class="memItemRight"><b>~SmartDevice</b> ()</td></tr>
+<tr class="memdesc:adf660b3efc39041ff216a1fe94d535b2 pub_methods_class_smart_device"><td class="mdescLeft">&#160;</td><td class="mdescRight">Обеспечивает удаление наследников через базовый указатель. <br /></td></tr>
+<tr class="memitem:a18fa0b55b57e37bd9f2516298067aeaa pub_methods_class_smart_device" id="r_a18fa0b55b57e37bd9f2516298067aeaa"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="class_smart_device.html#a18fa0b55b57e37bd9f2516298067aeaa">isOn</a> () const</td></tr>
+<tr class="memdesc:a18fa0b55b57e37bd9f2516298067aeaa pub_methods_class_smart_device"><td class="mdescLeft">&#160;</td><td class="mdescRight">Проверяет состояние питания.  <br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pri-attribs" class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Закрытые данные</h2></td></tr>
+<tr class="memitem:a564b06899d415e5eccff754baf90befb" id="r_a564b06899d415e5eccff754baf90befb"><td class="memItemLeft">double&#160;</td><td class="memItemRight"><a class="el" href="#a564b06899d415e5eccff754baf90befb">temperature</a></td></tr>
+<tr class="memdesc:a564b06899d415e5eccff754baf90befb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Заданная температура в градусах Цельсия.  <br /></td></tr>
+<tr class="memitem:a604cb559978e2694a3cfc6f794e7a1cb" id="r_a604cb559978e2694a3cfc6f794e7a1cb"><td class="memItemLeft">string&#160;</td><td class="memItemRight"><a class="el" href="#a604cb559978e2694a3cfc6f794e7a1cb">mode</a></td></tr>
+<tr class="memdesc:a604cb559978e2694a3cfc6f794e7a1cb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Название режима термостата.  <br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-inherited" class="groupheader"><a id="inherited" name="inherited"></a>
+Дополнительные унаследованные члены</h2></td></tr>
+<tr class="inherit_header pub_static_methods_class_powered_device"><td colspan="2">Открытые статические члены унаследованные от <a class="el" href="class_powered_device.html">PoweredDevice</a></td></tr>
+<tr class="memitem:a524313a030f5177a9b598f162e77ee2d pub_static_methods_class_powered_device" id="r_a524313a030f5177a9b598f162e77ee2d"><td class="memItemLeft">static double&#160;</td><td class="memItemRight"><a class="el" href="class_powered_device.html#a524313a030f5177a9b598f162e77ee2d">getTotalEnergyConsumed</a> ()</td></tr>
+<tr class="memdesc:a524313a030f5177a9b598f162e77ee2d pub_static_methods_class_powered_device"><td class="mdescLeft">&#160;</td><td class="mdescRight">Возвращает общий учтённый расход всех устройств.  <br /></td></tr>
+<tr class="inherit_header pro_methods_class_powered_device"><td colspan="2">Защищенные члены унаследованные от <a class="el" href="class_powered_device.html">PoweredDevice</a></td></tr>
+<tr class="memitem:a9b1e34abc5976cc4dd962a1722797144 pro_methods_class_powered_device" id="r_a9b1e34abc5976cc4dd962a1722797144"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="class_powered_device.html#a9b1e34abc5976cc4dd962a1722797144">PoweredDevice</a> (const string &amp;name, double powerConsumption)</td></tr>
+<tr class="memdesc:a9b1e34abc5976cc4dd962a1722797144 pro_methods_class_powered_device"><td class="mdescLeft">&#160;</td><td class="mdescRight">Создаёт устройство с заданной номинальной мощностью.  <br /></td></tr>
+<tr class="memitem:ae4b9b46b6d228f3caa059a011707e279 pro_methods_class_powered_device" id="r_ae4b9b46b6d228f3caa059a011707e279"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="class_powered_device.html#ae4b9b46b6d228f3caa059a011707e279">PoweredDevice</a> (const <a class="el" href="class_powered_device.html">PoweredDevice</a> &amp;other)</td></tr>
+<tr class="memdesc:ae4b9b46b6d228f3caa059a011707e279 pro_methods_class_powered_device"><td class="mdescLeft">&#160;</td><td class="mdescRight">Создаёт независимую копию состояния и параметров.  <br /></td></tr>
+<tr class="memitem:a6e058219895b36e93a8a386ee38b87e6 pro_methods_class_powered_device" id="r_a6e058219895b36e93a8a386ee38b87e6"><td class="memItemLeft"><a class="el" href="class_powered_device.html">PoweredDevice</a> &amp;&#160;</td><td class="memItemRight"><a class="el" href="class_powered_device.html#a6e058219895b36e93a8a386ee38b87e6">operator=</a> (const <a class="el" href="class_powered_device.html">PoweredDevice</a> &amp;other)</td></tr>
+<tr class="memdesc:a6e058219895b36e93a8a386ee38b87e6 pro_methods_class_powered_device"><td class="mdescLeft">&#160;</td><td class="mdescRight">Присваивает состояние и параметры другого объекта.  <br /></td></tr>
+<tr class="inherit_header pro_methods_class_smart_device"><td colspan="2">Защищенные члены унаследованные от <a class="el" href="class_smart_device.html">SmartDevice</a></td></tr>
+<tr class="memitem:aacf5aac909e34c241d5ac9958db1f139 pro_methods_class_smart_device" id="r_aacf5aac909e34c241d5ac9958db1f139"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="class_smart_device.html#aacf5aac909e34c241d5ac9958db1f139">SmartDevice</a> (const string &amp;name)</td></tr>
+<tr class="memdesc:aacf5aac909e34c241d5ac9958db1f139 pro_methods_class_smart_device"><td class="mdescLeft">&#160;</td><td class="mdescRight">Создаёт выключенное устройство.  <br /></td></tr>
+<tr class="memitem:ac45ee1b8b016a7d1c40631a440174c83 pro_methods_class_smart_device" id="r_ac45ee1b8b016a7d1c40631a440174c83"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="class_smart_device.html#ac45ee1b8b016a7d1c40631a440174c83">SmartDevice</a> (const <a class="el" href="class_smart_device.html">SmartDevice</a> &amp;other)</td></tr>
+<tr class="memdesc:ac45ee1b8b016a7d1c40631a440174c83 pro_methods_class_smart_device"><td class="mdescLeft">&#160;</td><td class="mdescRight">Создаёт независимую копию состояния и параметров.  <br /></td></tr>
+<tr class="memitem:a1a6820afbba7cb4e69b7ff04a275330c pro_methods_class_smart_device" id="r_a1a6820afbba7cb4e69b7ff04a275330c"><td class="memItemLeft"><a class="el" href="class_smart_device.html">SmartDevice</a> &amp;&#160;</td><td class="memItemRight"><a class="el" href="class_smart_device.html#a1a6820afbba7cb4e69b7ff04a275330c">operator=</a> (const <a class="el" href="class_smart_device.html">SmartDevice</a> &amp;other)</td></tr>
+<tr class="memdesc:a1a6820afbba7cb4e69b7ff04a275330c pro_methods_class_smart_device"><td class="mdescLeft">&#160;</td><td class="mdescRight">Присваивает состояние и параметры другого объекта.  <br /></td></tr>
+<tr class="inherit_header pro_attribs_class_powered_device"><td colspan="2">Защищенные данные унаследованные от <a class="el" href="class_powered_device.html">PoweredDevice</a></td></tr>
+<tr class="memitem:ad082734c7e8c5faa47be5fc5c54d83f8 pro_attribs_class_powered_device" id="r_ad082734c7e8c5faa47be5fc5c54d83f8"><td class="memItemLeft">double&#160;</td><td class="memItemRight"><a class="el" href="class_powered_device.html#ad082734c7e8c5faa47be5fc5c54d83f8">powerConsumption</a></td></tr>
+<tr class="memdesc:ad082734c7e8c5faa47be5fc5c54d83f8 pro_attribs_class_powered_device"><td class="mdescLeft">&#160;</td><td class="mdescRight">Номинальная мощность в ваттах.  <br /></td></tr>
+<tr class="inherit_header pro_attribs_class_smart_device"><td colspan="2">Защищенные данные унаследованные от <a class="el" href="class_smart_device.html">SmartDevice</a></td></tr>
+<tr class="memitem:a765186d030ecf4fd59c64956c6a9c110 pro_attribs_class_smart_device" id="r_a765186d030ecf4fd59c64956c6a9c110"><td class="memItemLeft">string&#160;</td><td class="memItemRight"><a class="el" href="class_smart_device.html#a765186d030ecf4fd59c64956c6a9c110">name</a></td></tr>
+<tr class="memdesc:a765186d030ecf4fd59c64956c6a9c110 pro_attribs_class_smart_device"><td class="mdescLeft">&#160;</td><td class="mdescRight">Имя устройства; строка владеет своим содержимым.  <br /></td></tr>
+<tr class="memitem:ae9693f57106391b8881d357d02d6b812 pro_attribs_class_smart_device" id="r_ae9693f57106391b8881d357d02d6b812"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="class_smart_device.html#ae9693f57106391b8881d357d02d6b812">on</a></td></tr>
+<tr class="memdesc:ae9693f57106391b8881d357d02d6b812 pro_attribs_class_smart_device"><td class="mdescLeft">&#160;</td><td class="mdescRight">Состояние питания: true — включено.  <br /></td></tr>
+</table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Подробное описание</h2>
+<div class="textblock"><p>Умный термостат с температурой и режимом. </p>
+<p>Использует стандартную мощность <a class="el" href="class_powered_device.html#a5d863623d2d83ba6a532fadb00c65e08" title="Возвращает мощность по умолчанию.">PoweredDevice::getPowerUsage()</a>. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="_thermostat_8h_source.html">Thermostat.h</a> строка <a class="el" href="_thermostat_8h_source.html#l00014">14</a></p>
+</div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Конструктор(ы)</h2>
+<a id="a24e5f3baadd183b8fe91b0b311beedbe" name="a24e5f3baadd183b8fe91b0b311beedbe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a24e5f3baadd183b8fe91b0b311beedbe">&#9670;&#160;</a></span>Thermostat() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Thermostat::Thermostat </td>
+          <td>(</td>
+          <td class="paramtype">const string &amp;</td>          <td class="paramname"><span class="paramname"><em>name</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double</td>          <td class="paramname"><span class="paramname"><em>power</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double</td>          <td class="paramname"><span class="paramname"><em>temperature</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const string &amp;</td>          <td class="paramname"><span class="paramname"><em>mode</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Создаёт выключенный термостат. </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td>Имя термостата. </td></tr>
+    <tr><td class="paramname">power</td><td>Мощность в ваттах. </td></tr>
+    <tr><td class="paramname">temperature</td><td>Заданная температура в градусах Цельсия. </td></tr>
+    <tr><td class="paramname">mode</td><td>Название режима. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="exception"><dt>Исключения</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">invalid_argument</td><td>Если мощность недопустима. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">См. определение в файле <a class="el" href="_thermostat_8cpp_source.html">Thermostat.cpp</a> строка <a class="el" href="_thermostat_8cpp_source.html#l00010">10</a></p>
+
+</div>
+</div>
+<a id="ac1bcbc798fa2560e154c9d3c97c1782e" name="ac1bcbc798fa2560e154c9d3c97c1782e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac1bcbc798fa2560e154c9d3c97c1782e">&#9670;&#160;</a></span>Thermostat() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Thermostat::Thermostat </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="class_thermostat.html">Thermostat</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>other</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Создаёт независимую копию состояния и параметров. </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">other</td><td>Копируемый объект. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">См. определение в файле <a class="el" href="_thermostat_8cpp_source.html">Thermostat.cpp</a> строка <a class="el" href="_thermostat_8cpp_source.html#l00011">11</a></p>
+
+</div>
+</div>
+<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Методы</h2>
+<a id="a62f759c79821ea3d111c2fcc9edeb0b7" name="a62f759c79821ea3d111c2fcc9edeb0b7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a62f759c79821ea3d111c2fcc9edeb0b7">&#9670;&#160;</a></span>getStatus()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">string Thermostat::getStatus </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel override">override</span><span class="mlabel virtual">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Формирует строку с типом, состоянием и параметрами устройства. </p>
+<dl class="section return"><dt>Возвращает</dt><dd>Строка состояния. </dd></dl>
+
+<p>Замещает <a class="el" href="class_smart_device.html#a22de695bb71d662a054febacf61996a4">SmartDevice</a>.</p>
+
+<p class="definition">См. определение в файле <a class="el" href="_thermostat_8cpp_source.html">Thermostat.cpp</a> строка <a class="el" href="_thermostat_8cpp_source.html#l00022">22</a></p>
+
+</div>
+</div>
+<a id="a41681c3c02a6e0771015ff2a73b11b60" name="a41681c3c02a6e0771015ff2a73b11b60"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a41681c3c02a6e0771015ff2a73b11b60">&#9670;&#160;</a></span>operator=()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_thermostat.html">Thermostat</a> &amp; Thermostat::operator= </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="class_thermostat.html">Thermostat</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>other</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Присваивает состояние и параметры другого объекта. </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">other</td><td>Объект-источник. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>Ссылка на текущий объект.</dd></dl>
+<p>Самоприсваивание сохраняет объект без изменений. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="_thermostat_8cpp_source.html">Thermostat.cpp</a> строка <a class="el" href="_thermostat_8cpp_source.html#l00012">12</a></p>
+
+</div>
+</div>
+<a id="a70b2169a00b790a352cc4fa096c2c0f8" name="a70b2169a00b790a352cc4fa096c2c0f8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a70b2169a00b790a352cc4fa096c2c0f8">&#9670;&#160;</a></span>setTemperature()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Thermostat::setTemperature </td>
+          <td>(</td>
+          <td class="paramtype">double</td>          <td class="paramname"><span class="paramname"><em>value</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Изменяет заданную температуру. </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">value</td><td>Температура в градусах Цельсия. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">См. определение в файле <a class="el" href="_thermostat_8cpp_source.html">Thermostat.cpp</a> строка <a class="el" href="_thermostat_8cpp_source.html#l00021">21</a></p>
+
+</div>
+</div>
+<a name="doc-variable-members" id="doc-variable-members"></a><h2 id="header-doc-variable-members" class="groupheader">Данные класса</h2>
+<a id="a604cb559978e2694a3cfc6f794e7a1cb" name="a604cb559978e2694a3cfc6f794e7a1cb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a604cb559978e2694a3cfc6f794e7a1cb">&#9670;&#160;</a></span>mode</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">string Thermostat::mode</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Название режима термостата. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="_thermostat_8h_source.html">Thermostat.h</a> строка <a class="el" href="_thermostat_8h_source.html#l00016">16</a></p>
+
+</div>
+</div>
+<a id="a564b06899d415e5eccff754baf90befb" name="a564b06899d415e5eccff754baf90befb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a564b06899d415e5eccff754baf90befb">&#9670;&#160;</a></span>temperature</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double Thermostat::temperature</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Заданная температура в градусах Цельсия. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="_thermostat_8h_source.html">Thermostat.h</a> строка <a class="el" href="_thermostat_8h_source.html#l00015">15</a></p>
+
+</div>
+</div>
+<hr/>Объявления и описания членов классов находятся в файлах:<ul>
+<li><a class="el" href="_thermostat_8h_source.html">Thermostat.h</a></li>
+<li><a class="el" href="_thermostat_8cpp_source.html">Thermostat.cpp</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="class_thermostat.html">Thermostat</a></li>
+    <li class="footer">Создано системой <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.18.0 </li>
+  </ul>
+</div>
+</body>
+</html>

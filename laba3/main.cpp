@@ -410,7 +410,6 @@ public:
 int main() {
     SetConsoleOutputCP(CP_UTF8);
     SetConsoleCP(CP_UTF8);
-    setlocale(LC_ALL, "");
 
     cout << "=== Работа с классом Money ===\n";
 
@@ -482,7 +481,7 @@ int main() {
     cout << "b != c: " << (b != c) << '\n';
 
     // Money wrong = 500; // Ошибка: explicit запрещает неявное преобразование.
-    Money correct(500LL);
+    Money correct(500);
 
     cout << "\nЯвное создание из копеек: ";
     correct.print();

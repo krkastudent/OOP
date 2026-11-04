@@ -1,0 +1,74 @@
+@startuml
+!pragma layout smetana
+
+abstract class SmartDevice {
+    #name: string
+    #on: bool
+    #SmartDevice(name: string)
+    #SmartDevice(const SmartDevice&)
+    #operator=(const SmartDevice&): SmartDevice&
+    +~SmartDevice()
+    +{abstract} turnOn(): void
+    +{abstract} turnOff(): void
+    +{abstract} getStatus(): string
+    +isOn(): bool
+}
+
+abstract class PoweredDevice {
+    #powerConsumption: double
+    -started: chrono::steady_clock::time_point
+    -sessionPower: double
+    -{static} totalEnergyConsumed: double
+    #PoweredDevice(name: string, power: double)
+    #PoweredDevice(const PoweredDevice&)
+    #operator=(const PoweredDevice&): PoweredDevice&
+    +~PoweredDevice()
+    +turnOn(): void
+    +turnOff(): void
+    +getPowerUsage(): double
+    +{static} getTotalEnergyConsumed(): double
+}
+
+class LightBulb {
+    -brightness: int
+    -color: string
+    +LightBulb(name, power, brightness, color)
+    +LightBulb(const LightBulb&)
+    +operator=(const LightBulb&): LightBulb&
+    +setBrightness(value: int): void
+    +getPowerUsage(): double
+    +getStatus(): string
+}
+
+class Thermostat {
+    -temperature: double
+    -mode: string
+    +Thermostat(name, power, temperature, mode)
+    +Thermostat(const Thermostat&)
+    +operator=(const Thermostat&): Thermostat&
+    +setTemperature(value: double): void
+    +getStatus(): string
+}
+
+interface ISensor {
+    +~ISensor()
+    +getCurrentVoltage(): double
+}
+
+class SmartOutlet {
+    -voltage: double
+    +SmartOutlet(name, power, voltage)
+    +SmartOutlet(const SmartOutlet&)
+    +operator=(const SmartOutlet&): SmartOutlet&
+    +getCurrentVoltage(): double
+    +setVoltage(value: double): void
+    +getStatus(): string
+}
+
+SmartDevice <|-- PoweredDevice
+PoweredDevice <|-- LightBulb
+PoweredDevice <|-- Thermostat
+PoweredDevice <|-- SmartOutlet
+ISensor <|.. SmartOutlet
+
+@enduml

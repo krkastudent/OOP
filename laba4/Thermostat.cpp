@@ -21,6 +21,6 @@ Thermostat& Thermostat::operator=(const Thermostat& other) {
 void Thermostat::setTemperature(double value) { temperature = value; }
 string Thermostat::getStatus() const {
     ostringstream out;
-    out << "Thermostat " << (on ? "ON" : "OFF") << ", " << powerConsumption << " W, temperature=" << temperature << ", mode=" << mode;
+    out << "Термостат " << (on ? "включён" : "выключен") << ", " << powerConsumption << " Вт, температура=" << temperature << " °C, режим=" << mode;
     return out.str();
 }

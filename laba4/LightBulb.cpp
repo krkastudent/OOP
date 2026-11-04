@@ -24,7 +24,7 @@ LightBulb& LightBulb::operator=(const LightBulb& other) {
 
 void LightBulb::setBrightness(int value) {
     if (value < 0 || value > 100) {
-        throw invalid_argument("Brightness must be between 0 and 100");
+        throw invalid_argument("Яркость должна быть от 0 до 100 процентов");
     }
     const bool wasOn = on;
     if (wasOn) {
@@ -42,6 +42,6 @@ double LightBulb::getPowerUsage() const {
 
 string LightBulb::getStatus() const {
     ostringstream out;
-    out << "LightBulb " << (on ? "ON" : "OFF") << ", " << powerConsumption << " W, brightness=" << brightness << ", color=" << color;
+    out << "Лампа " << (on ? "включена" : "выключена") << ", " << powerConsumption << " Вт, яркость=" << brightness << "%, цвет=" << color;
     return out.str();
 }

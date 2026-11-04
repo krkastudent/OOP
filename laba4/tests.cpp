@@ -16,6 +16,12 @@
  * @file tests.cpp
  * @brief Клиентский код двух тестовых программ.
  */
+#ifdef _WIN32
+#define NOMINMAX
+#define WIN32_LEAN_AND_MEAN
+#include <windows.h>
+#endif
+
 #include "LightBulb.h"
 #include "Thermostat.h"
 #include "SmartOutlet.h"
@@ -28,6 +34,7 @@
 #include <stdexcept>
 #include <thread>
 
+
 using namespace std;
 
 /**
@@ -39,10 +46,13 @@ using namespace std;
  * @note Неудачный assert аварийно завершает тест.
  */
 int main() {
+#ifdef _WIN32
+    SetConsoleOutputCP(CP_UTF8); // Вывод кириллицы в консоли Windows.
+#endif
     try {
         ifstream file("devices.txt");
         if (!file) {
-            throw runtime_error("Cannot open devices.txt");
+            throw runtime_error("Не удалось открыть файл devices.txt");
         }
         array<unique_ptr<SmartDevice>, 10> devices;
         int bulbs = 0, thermostats = 0, outlets = 0;
@@ -51,33 +61,33 @@ int main() {
             double power;
             int state;
             if (!(file >> type >> name >> power >> state) || (state != 0 && state != 1)) {
-                throw runtime_error("Invalid device record");
+                throw runtime_error("Неверная запись об устройстве");
             }
-            if (type == "LIGHT") {
+            if (type == "ЛАМПА") {
                 int brightness;
                 string color;
                 if (!(file >> brightness >> color)) {
-                    throw runtime_error("Invalid bulb");
+                    throw runtime_error("Неверные данные лампы");
                 }
                 device = make_unique<LightBulb>(name, power, brightness, color);
                 ++bulbs;
-            } else if (type == "THERMOSTAT") {
+            } else if (type == "ТЕРМОСТАТ") {
                 double temperature;
                 string mode;
                 if (!(file >> temperature >> mode)) {
-                    throw runtime_error("Invalid thermostat");
+                    throw runtime_error("Неверные данные термостата");
                 }
                 device = make_unique<Thermostat>(name, power, temperature, mode);
                 ++thermostats;
-            } else if (type == "OUTLET") {
+            } else if (type == "РОЗЕТКА") {
                 double voltage;
                 if (!(file >> voltage)) {
-                    throw runtime_error("Invalid outlet");
+                    throw runtime_error("Неверные данные розетки");
                 }
                 device = make_unique<SmartOutlet>(name, power, voltage);
                 ++outlets;
             } else {
-                throw runtime_error("Unknown device type");
+                throw runtime_error("Неизвестный тип устройства");
             }
             if (state) {
                 device->turnOn();
@@ -111,13 +121,13 @@ int main() {
             device->turnOff();
         }
         assert(PoweredDevice::getTotalEnergyConsumed() == after);
-        cout << "Energy consumed: " << energy << " kWh\n";
+        cout << "Потреблено энергии: " << energy << " кВт·ч\n";
 
         // Копирование и присваивание лампы: состояние и все параметры сохраняются.
         auto& bulb = dynamic_cast<LightBulb&>(*devices[0]);
         bulb.turnOn();
         const string bulbState = bulb.getStatus();
-        LightBulb bulbCopy(bulb), bulbAssigned("Target", 1, 0, "red");
+        LightBulb bulbCopy(bulb), bulbAssigned("Копия", 1, 0, "красный");
         bulbAssigned = bulb;
         assert(bulbCopy.getStatus() == bulb.getStatus() && bulbAssigned.getStatus() == bulb.getStatus());
         assert(bulbCopy.isOn() && bulbAssigned.isOn());
@@ -132,7 +142,7 @@ int main() {
         auto& thermostat = dynamic_cast<Thermostat&>(*devices[4]);
         thermostat.turnOn();
         const string thermostatState = thermostat.getStatus();
-        Thermostat thermostatCopy(thermostat), thermostatAssigned("Target", 1, 0, "off");
+        Thermostat thermostatCopy(thermostat), thermostatAssigned("Копия", 1, 0, "выключен");
         thermostatAssigned = thermostat;
         assert(thermostatCopy.getStatus() == thermostat.getStatus());
         assert(thermostatAssigned.getStatus() == thermostat.getStatus());
@@ -147,7 +157,7 @@ int main() {
         outlet.turnOn();
         assert(outlet.getPowerUsage() == 200.0);
         const string outletState = outlet.getStatus();
-        SmartOutlet outletCopy(outlet), outletAssigned("Target", 1, 220);
+        SmartOutlet outletCopy(outlet), outletAssigned("Копия", 1, 220);
         outletAssigned = outlet;
         assert(outletCopy.getStatus() == outlet.getStatus() && outletAssigned.getStatus() == outlet.getStatus());
         assert(outletCopy.isOn() && outletAssigned.isOn());
@@ -161,17 +171,17 @@ int main() {
         for (auto& device : devices) {
             if (auto* sensor = dynamic_cast<ISensor*>(device.get())) {
                 assert(sensor->getCurrentVoltage() > 0);
-                cout << "Voltage: " << sensor->getCurrentVoltage() << " V\n";
+                cout << "Напряжение: " << sensor->getCurrentVoltage() << " В\n";
             }
         }
         bool caught = false;
         try { bulb.setBrightness(150); }
         catch (const invalid_argument& error) {
             caught = true;
-            cout << "Exception handled: " << error.what() << '\n';
+            cout << "Исключение обработано: " << error.what() << '\n';
         }
         assert(caught);
-        cout << "All tests passed\n";
+        cout << "Все проверки пройдены\n";
     } catch (const exception& error) {
         cerr << error.what() << '\n';
         return 1;

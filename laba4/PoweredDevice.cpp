@@ -12,7 +12,7 @@ double PoweredDevice::totalEnergyConsumed = 0.0;
 
 PoweredDevice::PoweredDevice(const string& name, double powerConsumption): SmartDevice(name), powerConsumption(powerConsumption), sessionPower(0.0) {
     if (!isfinite(powerConsumption) || powerConsumption <= 0) {
-        throw invalid_argument("Power must be positive and finite");
+        throw invalid_argument("Мощность должна быть положительным конечным числом");
     }
 }
 

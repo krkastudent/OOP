@@ -21,6 +21,6 @@ double SmartOutlet::getCurrentVoltage() const { return voltage; }
 void SmartOutlet::setVoltage(double value) { voltage = value; }
 string SmartOutlet::getStatus() const {
     ostringstream out;
-    out << "SmartOutlet " << (on ? "ON" : "OFF") << ", " << powerConsumption << " W, voltage=" << voltage;
+    out << "Розетка " << (on ? "включена" : "выключена") << ", " << powerConsumption << " Вт, напряжение=" << voltage << " В";
     return out.str();
 }

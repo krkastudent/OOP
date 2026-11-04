@@ -113,160 +113,170 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('tests_8cpp_sou
 </div><!--header-->
 <div class="contents">
 <a href="tests_8cpp.html">См. документацию.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span></div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">#include &quot;<a class="code" href="_light_bulb_8h.html">LightBulb.h</a>&quot;</span></div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="preprocessor">#include &quot;<a class="code" href="_thermostat_8h.html">Thermostat.h</a>&quot;</span></div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="preprocessor">#include &quot;<a class="code" href="_smart_outlet_8h.html">SmartOutlet.h</a>&quot;</span></div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="preprocessor">#include &lt;array&gt;</span></div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="preprocessor">#include &lt;cassert&gt;</span></div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="preprocessor">#include &lt;cmath&gt;</span></div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="preprocessor">#include &lt;fstream&gt;</span></div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="preprocessor">#include &lt;iostream&gt;</span></div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="preprocessor">#include &lt;memory&gt;</span></div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="preprocessor">#include &lt;stdexcept&gt;</span></div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="preprocessor">#include &lt;thread&gt;</span></div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="keyword">using namespace </span>std;</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span></div>
-<div class="foldopen" id="foldopen00041" data-start="{" data-end="}">
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno"><a class="line" href="tests_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4">   41</a></span><span class="keywordtype">int</span> <a class="code hl_function" href="tests_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4">main</a>() {</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    <span class="keywordflow">try</span> {</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>        ifstream file(<span class="stringliteral">&quot;devices.txt&quot;</span>);</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>        <span class="keywordflow">if</span> (!file) {</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>            <span class="keywordflow">throw</span> runtime_error(<span class="stringliteral">&quot;Cannot open devices.txt&quot;</span>);</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>        }</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>        array&lt;unique_ptr&lt;SmartDevice&gt;, 10&gt; devices;</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>        <span class="keywordtype">int</span> bulbs = 0, thermostats = 0, outlets = 0;</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>        <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp; device : devices) {</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>            <span class="keywordtype">string</span> type, name;</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>            <span class="keywordtype">double</span> power;</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>            <span class="keywordtype">int</span> state;</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>            <span class="keywordflow">if</span> (!(file &gt;&gt; type &gt;&gt; name &gt;&gt; power &gt;&gt; state) || (state != 0 &amp;&amp; state != 1)) {</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>                <span class="keywordflow">throw</span> runtime_error(<span class="stringliteral">&quot;Invalid device record&quot;</span>);</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>            }</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>            <span class="keywordflow">if</span> (type == <span class="stringliteral">&quot;LIGHT&quot;</span>) {</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>                <span class="keywordtype">int</span> brightness;</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>                <span class="keywordtype">string</span> color;</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>                <span class="keywordflow">if</span> (!(file &gt;&gt; brightness &gt;&gt; color)) {</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>                    <span class="keywordflow">throw</span> runtime_error(<span class="stringliteral">&quot;Invalid bulb&quot;</span>);</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>                }</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>                device = make_unique&lt;LightBulb&gt;(name, power, brightness, color);</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>                ++bulbs;</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>            } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (type == <span class="stringliteral">&quot;THERMOSTAT&quot;</span>) {</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>                <span class="keywordtype">double</span> temperature;</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>                <span class="keywordtype">string</span> mode;</div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>                <span class="keywordflow">if</span> (!(file &gt;&gt; temperature &gt;&gt; mode)) {</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>                    <span class="keywordflow">throw</span> runtime_error(<span class="stringliteral">&quot;Invalid thermostat&quot;</span>);</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>                }</div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>                device = make_unique&lt;Thermostat&gt;(name, power, temperature, mode);</div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>                ++thermostats;</div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>            } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (type == <span class="stringliteral">&quot;OUTLET&quot;</span>) {</div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>                <span class="keywordtype">double</span> voltage;</div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>                <span class="keywordflow">if</span> (!(file &gt;&gt; voltage)) {</div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>                    <span class="keywordflow">throw</span> runtime_error(<span class="stringliteral">&quot;Invalid outlet&quot;</span>);</div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>                }</div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>                device = make_unique&lt;SmartOutlet&gt;(name, power, voltage);</div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>                ++outlets;</div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>            } <span class="keywordflow">else</span> {</div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>                <span class="keywordflow">throw</span> runtime_error(<span class="stringliteral">&quot;Unknown device type&quot;</span>);</div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>            }</div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>            <span class="keywordflow">if</span> (state) {</div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>                device-&gt;turnOn();</div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>            }</div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>            cout &lt;&lt; *device &lt;&lt; <span class="charliteral">&#39;\n&#39;</span>; <span class="comment">// Дружественная функция и виртуальный getStatus.</span></div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>            device-&gt;turnOff();</div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>        }</div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>        assert(bulbs &gt;= 3 &amp;&amp; thermostats &gt;= 3 &amp;&amp; outlets &gt;= 3);</div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span> </div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>        <span class="comment">// Полиморфизм и общий расход за фактическое время между включением и выключением.</span></div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>        <span class="keyword">const</span> <span class="keywordtype">double</span> before = <a class="code hl_function" href="class_powered_device.html#a524313a030f5177a9b598f162e77ee2d">PoweredDevice::getTotalEnergyConsumed</a>();</div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>        <span class="keywordtype">double</span> watts = 0;</div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>        <span class="keyword">const</span> <span class="keyword">auto</span> firstOn = chrono::steady_clock::now();</div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>        <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp; device : devices) {</div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>            device-&gt;turnOn();</div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>            watts += <span class="keyword">dynamic_cast&lt;</span><a class="code hl_class" href="class_powered_device.html">PoweredDevice</a>&amp;<span class="keyword">&gt;</span>(*device).<a class="code hl_function" href="class_powered_device.html#a5d863623d2d83ba6a532fadb00c65e08">getPowerUsage</a>();</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">#ifdef _WIN32</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="preprocessor">#define NOMINMAX</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="preprocessor">#define WIN32_LEAN_AND_MEAN</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="preprocessor">#include &lt;windows.h&gt;</span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="preprocessor">#include &quot;<a class="code" href="_light_bulb_8h.html">LightBulb.h</a>&quot;</span></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="preprocessor">#include &quot;<a class="code" href="_thermostat_8h.html">Thermostat.h</a>&quot;</span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="preprocessor">#include &quot;<a class="code" href="_smart_outlet_8h.html">SmartOutlet.h</a>&quot;</span></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="preprocessor">#include &lt;array&gt;</span></div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="preprocessor">#include &lt;cassert&gt;</span></div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="preprocessor">#include &lt;cmath&gt;</span></div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="preprocessor">#include &lt;fstream&gt;</span></div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="preprocessor">#include &lt;memory&gt;</span></div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="preprocessor">#include &lt;stdexcept&gt;</span></div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="preprocessor">#include &lt;thread&gt;</span></div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="keyword">using namespace </span>std;</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span></div>
+<div class="foldopen" id="foldopen00048" data-start="{" data-end="}">
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno"><a class="line" href="tests_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4">   48</a></span><span class="keywordtype">int</span> <a class="code hl_function" href="tests_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4">main</a>() {</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="preprocessor">#ifdef _WIN32</span></div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    SetConsoleOutputCP(CP_UTF8); <span class="comment">// Вывод кириллицы в консоли Windows.</span></div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    <span class="keywordflow">try</span> {</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>        ifstream file(<span class="stringliteral">&quot;devices.txt&quot;</span>);</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>        <span class="keywordflow">if</span> (!file) {</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>            <span class="keywordflow">throw</span> runtime_error(<span class="stringliteral">&quot;Не удалось открыть файл devices.txt&quot;</span>);</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>        }</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>        array&lt;unique_ptr&lt;SmartDevice&gt;, 10&gt; devices;</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>        <span class="keywordtype">int</span> bulbs = 0, thermostats = 0, outlets = 0;</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>        <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp; device : devices) {</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>            <span class="keywordtype">string</span> type, name;</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>            <span class="keywordtype">double</span> power;</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>            <span class="keywordtype">int</span> state;</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>            <span class="keywordflow">if</span> (!(file &gt;&gt; type &gt;&gt; name &gt;&gt; power &gt;&gt; state) || (state != 0 &amp;&amp; state != 1)) {</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>                <span class="keywordflow">throw</span> runtime_error(<span class="stringliteral">&quot;Неверная запись об устройстве&quot;</span>);</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>            }</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>            <span class="keywordflow">if</span> (type == <span class="stringliteral">&quot;ЛАМПА&quot;</span>) {</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>                <span class="keywordtype">int</span> brightness;</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>                <span class="keywordtype">string</span> color;</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>                <span class="keywordflow">if</span> (!(file &gt;&gt; brightness &gt;&gt; color)) {</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>                    <span class="keywordflow">throw</span> runtime_error(<span class="stringliteral">&quot;Неверные данные лампы&quot;</span>);</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>                }</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>                device = make_unique&lt;LightBulb&gt;(name, power, brightness, color);</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>                ++bulbs;</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>            } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (type == <span class="stringliteral">&quot;ТЕРМОСТАТ&quot;</span>) {</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>                <span class="keywordtype">double</span> temperature;</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>                <span class="keywordtype">string</span> mode;</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>                <span class="keywordflow">if</span> (!(file &gt;&gt; temperature &gt;&gt; mode)) {</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>                    <span class="keywordflow">throw</span> runtime_error(<span class="stringliteral">&quot;Неверные данные термостата&quot;</span>);</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>                }</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>                device = make_unique&lt;Thermostat&gt;(name, power, temperature, mode);</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>                ++thermostats;</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>            } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (type == <span class="stringliteral">&quot;РОЗЕТКА&quot;</span>) {</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>                <span class="keywordtype">double</span> voltage;</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>                <span class="keywordflow">if</span> (!(file &gt;&gt; voltage)) {</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>                    <span class="keywordflow">throw</span> runtime_error(<span class="stringliteral">&quot;Неверные данные розетки&quot;</span>);</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>                }</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>                device = make_unique&lt;SmartOutlet&gt;(name, power, voltage);</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>                ++outlets;</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>            } <span class="keywordflow">else</span> {</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>                <span class="keywordflow">throw</span> runtime_error(<span class="stringliteral">&quot;Неизвестный тип устройства&quot;</span>);</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>            }</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>            <span class="keywordflow">if</span> (state) {</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>                device-&gt;turnOn();</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>            }</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>            cout &lt;&lt; *device &lt;&lt; <span class="charliteral">&#39;\n&#39;</span>; <span class="comment">// Дружественная функция и виртуальный getStatus.</span></div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>            device-&gt;turnOff();</div>
 <div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>        }</div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>        <span class="keyword">const</span> <span class="keyword">auto</span> lastOn = chrono::steady_clock::now();</div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>        this_thread::sleep_for(chrono::milliseconds(20));</div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>        <span class="keyword">const</span> <span class="keyword">auto</span> firstOff = chrono::steady_clock::now();</div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>        <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp; device : devices) {</div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>            device-&gt;turnOff();</div>
-<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>        }</div>
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>        <span class="keyword">const</span> <span class="keyword">auto</span> lastOff = chrono::steady_clock::now();</div>
-<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>        <span class="keyword">const</span> <span class="keywordtype">double</span> energy = <a class="code hl_function" href="class_powered_device.html#a524313a030f5177a9b598f162e77ee2d">PoweredDevice::getTotalEnergyConsumed</a>() - before;</div>
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>        <span class="keyword">const</span> <span class="keywordtype">double</span> minimum = watts * chrono::duration&lt;double&gt;(firstOff - lastOn).count() / 3600000;</div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>        <span class="keyword">const</span> <span class="keywordtype">double</span> maximum = watts * chrono::duration&lt;double&gt;(lastOff - firstOn).count() / 3600000;</div>
-<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>        assert(energy &gt;= minimum - 1e-12 &amp;&amp; energy &lt;= maximum + 1e-12 &amp;&amp; energy &gt; 0);</div>
-<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>        <span class="keyword">const</span> <span class="keywordtype">double</span> after = <a class="code hl_function" href="class_powered_device.html#a524313a030f5177a9b598f162e77ee2d">PoweredDevice::getTotalEnergyConsumed</a>();</div>
-<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>        <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp; device : devices) {</div>
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>            device-&gt;turnOff();</div>
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>        }</div>
-<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>        assert(<a class="code hl_function" href="class_powered_device.html#a524313a030f5177a9b598f162e77ee2d">PoweredDevice::getTotalEnergyConsumed</a>() == after);</div>
-<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>        cout &lt;&lt; <span class="stringliteral">&quot;Energy consumed: &quot;</span> &lt;&lt; energy &lt;&lt; <span class="stringliteral">&quot; kWh\n&quot;</span>;</div>
-<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span> </div>
-<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>        <span class="comment">// Копирование и присваивание лампы: состояние и все параметры сохраняются.</span></div>
-<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>        <span class="keyword">auto</span>&amp; bulb = <span class="keyword">dynamic_cast&lt;</span><a class="code hl_class" href="class_light_bulb.html">LightBulb</a>&amp;<span class="keyword">&gt;</span>(*devices[0]);</div>
-<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>        bulb.<a class="code hl_function" href="class_powered_device.html#aa8c4cf167828ac91ec7bebf355425e9c">turnOn</a>();</div>
-<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>        <span class="keyword">const</span> <span class="keywordtype">string</span> bulbState = bulb.getStatus();</div>
-<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>        <a class="code hl_class" href="class_light_bulb.html">LightBulb</a> bulbCopy(bulb), bulbAssigned(<span class="stringliteral">&quot;Target&quot;</span>, 1, 0, <span class="stringliteral">&quot;red&quot;</span>);</div>
-<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>        bulbAssigned = bulb;</div>
-<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>        assert(bulbCopy.getStatus() == bulb.getStatus() &amp;&amp; bulbAssigned.<a class="code hl_function" href="class_light_bulb.html#a4c829c44a114b7528ed2265ede01990f">getStatus</a>() == bulb.getStatus());</div>
-<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>        assert(bulbCopy.isOn() &amp;&amp; bulbAssigned.<a class="code hl_function" href="class_smart_device.html#a18fa0b55b57e37bd9f2516298067aeaa">isOn</a>());</div>
-<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>        assert(abs(bulb.getPowerUsage() - 12.0) &lt; 1e-12);</div>
-<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>        bulb.setBrightness(10);</div>
-<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>        assert(abs(bulb.getPowerUsage() - 1.2) &lt; 1e-12);</div>
-<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>        bulb.turnOff();</div>
-<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>        assert(bulbCopy.getStatus() == bulbState &amp;&amp; bulbAssigned.<a class="code hl_function" href="class_light_bulb.html#a4c829c44a114b7528ed2265ede01990f">getStatus</a>() == bulbState);</div>
-<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>        bulbCopy.turnOff();</div>
-<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>        bulbAssigned.<a class="code hl_function" href="class_powered_device.html#a6ad02211ac80162283ee659dc6e0279e">turnOff</a>();</div>
-<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span> </div>
-<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>        <span class="keyword">auto</span>&amp; thermostat = <span class="keyword">dynamic_cast&lt;</span><a class="code hl_class" href="class_thermostat.html">Thermostat</a>&amp;<span class="keyword">&gt;</span>(*devices[4]);</div>
-<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>        thermostat.<a class="code hl_function" href="class_powered_device.html#aa8c4cf167828ac91ec7bebf355425e9c">turnOn</a>();</div>
-<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>        <span class="keyword">const</span> <span class="keywordtype">string</span> thermostatState = thermostat.getStatus();</div>
-<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>        <a class="code hl_class" href="class_thermostat.html">Thermostat</a> thermostatCopy(thermostat), thermostatAssigned(<span class="stringliteral">&quot;Target&quot;</span>, 1, 0, <span class="stringliteral">&quot;off&quot;</span>);</div>
-<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>        thermostatAssigned = thermostat;</div>
-<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>        assert(thermostatCopy.getStatus() == thermostat.getStatus());</div>
-<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>        assert(thermostatAssigned.<a class="code hl_function" href="class_thermostat.html#a62f759c79821ea3d111c2fcc9edeb0b7">getStatus</a>() == thermostat.getStatus());</div>
-<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>        assert(thermostatCopy.isOn() &amp;&amp; thermostatAssigned.<a class="code hl_function" href="class_smart_device.html#a18fa0b55b57e37bd9f2516298067aeaa">isOn</a>());</div>
-<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>        thermostat.setTemperature(30);</div>
-<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>        thermostat.turnOff();</div>
-<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>        assert(thermostatCopy.getStatus() == thermostatState &amp;&amp; thermostatAssigned.<a class="code hl_function" href="class_thermostat.html#a62f759c79821ea3d111c2fcc9edeb0b7">getStatus</a>() == thermostatState);</div>
-<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>        thermostatCopy.turnOff();</div>
-<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>        thermostatAssigned.<a class="code hl_function" href="class_powered_device.html#a6ad02211ac80162283ee659dc6e0279e">turnOff</a>();</div>
-<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span> </div>
-<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>        <span class="keyword">auto</span>&amp; outlet = <span class="keyword">dynamic_cast&lt;</span><a class="code hl_class" href="class_smart_outlet.html">SmartOutlet</a>&amp;<span class="keyword">&gt;</span>(*devices[7]);</div>
-<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>        outlet.<a class="code hl_function" href="class_powered_device.html#aa8c4cf167828ac91ec7bebf355425e9c">turnOn</a>();</div>
-<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>        assert(outlet.getPowerUsage() == 200.0);</div>
-<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>        <span class="keyword">const</span> <span class="keywordtype">string</span> outletState = outlet.getStatus();</div>
-<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>        <a class="code hl_class" href="class_smart_outlet.html">SmartOutlet</a> outletCopy(outlet), outletAssigned(<span class="stringliteral">&quot;Target&quot;</span>, 1, 220);</div>
-<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>        outletAssigned = outlet;</div>
-<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>        assert(outletCopy.getStatus() == outlet.getStatus() &amp;&amp; outletAssigned.<a class="code hl_function" href="class_smart_outlet.html#aff915b353959752dc218932ddc0b9007">getStatus</a>() == outlet.getStatus());</div>
-<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>        assert(outletCopy.isOn() &amp;&amp; outletAssigned.<a class="code hl_function" href="class_smart_device.html#a18fa0b55b57e37bd9f2516298067aeaa">isOn</a>());</div>
-<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>        outlet.setVoltage(210);</div>
-<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>        outlet.turnOff();</div>
-<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>        assert(outletCopy.getStatus() == outletState &amp;&amp; outletAssigned.<a class="code hl_function" href="class_smart_outlet.html#aff915b353959752dc218932ddc0b9007">getStatus</a>() == outletState);</div>
-<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>        outletCopy.turnOff();</div>
-<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>        outletAssigned.<a class="code hl_function" href="class_powered_device.html#a6ad02211ac80162283ee659dc6e0279e">turnOff</a>();</div>
-<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span> </div>
-<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>        <span class="comment">// Вызов через второй базовый класс розетки — интерфейс ISensor.</span></div>
-<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>        <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp; device : devices) {</div>
-<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>            <span class="keywordflow">if</span> (<span class="keyword">auto</span>* sensor = <span class="keyword">dynamic_cast&lt;</span><a class="code hl_class" href="class_i_sensor.html">ISensor</a>*<span class="keyword">&gt;</span>(device.get())) {</div>
-<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>                assert(sensor-&gt;getCurrentVoltage() &gt; 0);</div>
-<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>                cout &lt;&lt; <span class="stringliteral">&quot;Voltage: &quot;</span> &lt;&lt; sensor-&gt;getCurrentVoltage() &lt;&lt; <span class="stringliteral">&quot; V\n&quot;</span>;</div>
-<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>            }</div>
-<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>        }</div>
-<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>        <span class="keywordtype">bool</span> caught = <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>        <span class="keywordflow">try</span> { bulb.setBrightness(150); }</div>
-<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>        <span class="keywordflow">catch</span> (<span class="keyword">const</span> invalid_argument&amp; error) {</div>
-<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>            caught = <span class="keyword">true</span>;</div>
-<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>            cout &lt;&lt; <span class="stringliteral">&quot;Exception handled: &quot;</span> &lt;&lt; error.what() &lt;&lt; <span class="charliteral">&#39;\n&#39;</span>;</div>
-<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>        }</div>
-<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>        assert(caught);</div>
-<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>        cout &lt;&lt; <span class="stringliteral">&quot;All tests passed\n&quot;</span>;</div>
-<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>    } <span class="keywordflow">catch</span> (<span class="keyword">const</span> exception&amp; error) {</div>
-<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>        cerr &lt;&lt; error.what() &lt;&lt; <span class="charliteral">&#39;\n&#39;</span>;</div>
-<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span>        <span class="keywordflow">return</span> 1;</div>
-<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>    }</div>
-<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span>}</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>        assert(bulbs &gt;= 3 &amp;&amp; thermostats &gt;= 3 &amp;&amp; outlets &gt;= 3);</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span> </div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>        <span class="comment">// Полиморфизм и общий расход за фактическое время между включением и выключением.</span></div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>        <span class="keyword">const</span> <span class="keywordtype">double</span> before = <a class="code hl_function" href="class_powered_device.html#a524313a030f5177a9b598f162e77ee2d">PoweredDevice::getTotalEnergyConsumed</a>();</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>        <span class="keywordtype">double</span> watts = 0;</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>        <span class="keyword">const</span> <span class="keyword">auto</span> firstOn = chrono::steady_clock::now();</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>        <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp; device : devices) {</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>            device-&gt;turnOn();</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>            watts += <span class="keyword">dynamic_cast&lt;</span><a class="code hl_class" href="class_powered_device.html">PoweredDevice</a>&amp;<span class="keyword">&gt;</span>(*device).<a class="code hl_function" href="class_powered_device.html#a5d863623d2d83ba6a532fadb00c65e08">getPowerUsage</a>();</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>        }</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>        <span class="keyword">const</span> <span class="keyword">auto</span> lastOn = chrono::steady_clock::now();</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>        this_thread::sleep_for(chrono::milliseconds(20));</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>        <span class="keyword">const</span> <span class="keyword">auto</span> firstOff = chrono::steady_clock::now();</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>        <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp; device : devices) {</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>            device-&gt;turnOff();</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>        }</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>        <span class="keyword">const</span> <span class="keyword">auto</span> lastOff = chrono::steady_clock::now();</div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>        <span class="keyword">const</span> <span class="keywordtype">double</span> energy = <a class="code hl_function" href="class_powered_device.html#a524313a030f5177a9b598f162e77ee2d">PoweredDevice::getTotalEnergyConsumed</a>() - before;</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>        <span class="keyword">const</span> <span class="keywordtype">double</span> minimum = watts * chrono::duration&lt;double&gt;(firstOff - lastOn).count() / 3600000;</div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>        <span class="keyword">const</span> <span class="keywordtype">double</span> maximum = watts * chrono::duration&lt;double&gt;(lastOff - firstOn).count() / 3600000;</div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>        assert(energy &gt;= minimum - 1e-12 &amp;&amp; energy &lt;= maximum + 1e-12 &amp;&amp; energy &gt; 0);</div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>        <span class="keyword">const</span> <span class="keywordtype">double</span> after = <a class="code hl_function" href="class_powered_device.html#a524313a030f5177a9b598f162e77ee2d">PoweredDevice::getTotalEnergyConsumed</a>();</div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>        <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp; device : devices) {</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>            device-&gt;turnOff();</div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>        }</div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>        assert(<a class="code hl_function" href="class_powered_device.html#a524313a030f5177a9b598f162e77ee2d">PoweredDevice::getTotalEnergyConsumed</a>() == after);</div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>        cout &lt;&lt; <span class="stringliteral">&quot;Потреблено энергии: &quot;</span> &lt;&lt; energy &lt;&lt; <span class="stringliteral">&quot; кВт·ч\n&quot;</span>;</div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span> </div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>        <span class="comment">// Копирование и присваивание лампы: состояние и все параметры сохраняются.</span></div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>        <span class="keyword">auto</span>&amp; bulb = <span class="keyword">dynamic_cast&lt;</span><a class="code hl_class" href="class_light_bulb.html">LightBulb</a>&amp;<span class="keyword">&gt;</span>(*devices[0]);</div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>        bulb.<a class="code hl_function" href="class_powered_device.html#aa8c4cf167828ac91ec7bebf355425e9c">turnOn</a>();</div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>        <span class="keyword">const</span> <span class="keywordtype">string</span> bulbState = bulb.getStatus();</div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>        <a class="code hl_class" href="class_light_bulb.html">LightBulb</a> bulbCopy(bulb), bulbAssigned(<span class="stringliteral">&quot;Копия&quot;</span>, 1, 0, <span class="stringliteral">&quot;красный&quot;</span>);</div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>        bulbAssigned = bulb;</div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>        assert(bulbCopy.getStatus() == bulb.getStatus() &amp;&amp; bulbAssigned.<a class="code hl_function" href="class_light_bulb.html#a4c829c44a114b7528ed2265ede01990f">getStatus</a>() == bulb.getStatus());</div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>        assert(bulbCopy.isOn() &amp;&amp; bulbAssigned.<a class="code hl_function" href="class_smart_device.html#a18fa0b55b57e37bd9f2516298067aeaa">isOn</a>());</div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>        assert(abs(bulb.getPowerUsage() - 12.0) &lt; 1e-12);</div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>        bulb.setBrightness(10);</div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>        assert(abs(bulb.getPowerUsage() - 1.2) &lt; 1e-12);</div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>        bulb.turnOff();</div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>        assert(bulbCopy.getStatus() == bulbState &amp;&amp; bulbAssigned.<a class="code hl_function" href="class_light_bulb.html#a4c829c44a114b7528ed2265ede01990f">getStatus</a>() == bulbState);</div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>        bulbCopy.turnOff();</div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>        bulbAssigned.<a class="code hl_function" href="class_powered_device.html#a6ad02211ac80162283ee659dc6e0279e">turnOff</a>();</div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span> </div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>        <span class="keyword">auto</span>&amp; thermostat = <span class="keyword">dynamic_cast&lt;</span><a class="code hl_class" href="class_thermostat.html">Thermostat</a>&amp;<span class="keyword">&gt;</span>(*devices[4]);</div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>        thermostat.<a class="code hl_function" href="class_powered_device.html#aa8c4cf167828ac91ec7bebf355425e9c">turnOn</a>();</div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>        <span class="keyword">const</span> <span class="keywordtype">string</span> thermostatState = thermostat.getStatus();</div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>        <a class="code hl_class" href="class_thermostat.html">Thermostat</a> thermostatCopy(thermostat), thermostatAssigned(<span class="stringliteral">&quot;Копия&quot;</span>, 1, 0, <span class="stringliteral">&quot;выключен&quot;</span>);</div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>        thermostatAssigned = thermostat;</div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>        assert(thermostatCopy.getStatus() == thermostat.getStatus());</div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>        assert(thermostatAssigned.<a class="code hl_function" href="class_thermostat.html#a62f759c79821ea3d111c2fcc9edeb0b7">getStatus</a>() == thermostat.getStatus());</div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>        assert(thermostatCopy.isOn() &amp;&amp; thermostatAssigned.<a class="code hl_function" href="class_smart_device.html#a18fa0b55b57e37bd9f2516298067aeaa">isOn</a>());</div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>        thermostat.setTemperature(30);</div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>        thermostat.turnOff();</div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>        assert(thermostatCopy.getStatus() == thermostatState &amp;&amp; thermostatAssigned.<a class="code hl_function" href="class_thermostat.html#a62f759c79821ea3d111c2fcc9edeb0b7">getStatus</a>() == thermostatState);</div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>        thermostatCopy.turnOff();</div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>        thermostatAssigned.<a class="code hl_function" href="class_powered_device.html#a6ad02211ac80162283ee659dc6e0279e">turnOff</a>();</div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span> </div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>        <span class="keyword">auto</span>&amp; outlet = <span class="keyword">dynamic_cast&lt;</span><a class="code hl_class" href="class_smart_outlet.html">SmartOutlet</a>&amp;<span class="keyword">&gt;</span>(*devices[7]);</div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>        outlet.<a class="code hl_function" href="class_powered_device.html#aa8c4cf167828ac91ec7bebf355425e9c">turnOn</a>();</div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>        assert(outlet.getPowerUsage() == 200.0);</div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>        <span class="keyword">const</span> <span class="keywordtype">string</span> outletState = outlet.getStatus();</div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>        <a class="code hl_class" href="class_smart_outlet.html">SmartOutlet</a> outletCopy(outlet), outletAssigned(<span class="stringliteral">&quot;Копия&quot;</span>, 1, 220);</div>
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>        outletAssigned = outlet;</div>
+<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>        assert(outletCopy.getStatus() == outlet.getStatus() &amp;&amp; outletAssigned.<a class="code hl_function" href="class_smart_outlet.html#aff915b353959752dc218932ddc0b9007">getStatus</a>() == outlet.getStatus());</div>
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>        assert(outletCopy.isOn() &amp;&amp; outletAssigned.<a class="code hl_function" href="class_smart_device.html#a18fa0b55b57e37bd9f2516298067aeaa">isOn</a>());</div>
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>        outlet.setVoltage(210);</div>
+<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>        outlet.turnOff();</div>
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>        assert(outletCopy.getStatus() == outletState &amp;&amp; outletAssigned.<a class="code hl_function" href="class_smart_outlet.html#aff915b353959752dc218932ddc0b9007">getStatus</a>() == outletState);</div>
+<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>        outletCopy.turnOff();</div>
+<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>        outletAssigned.<a class="code hl_function" href="class_powered_device.html#a6ad02211ac80162283ee659dc6e0279e">turnOff</a>();</div>
+<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span> </div>
+<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>        <span class="comment">// Вызов через второй базовый класс розетки — интерфейс ISensor.</span></div>
+<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>        <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp; device : devices) {</div>
+<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>            <span class="keywordflow">if</span> (<span class="keyword">auto</span>* sensor = <span class="keyword">dynamic_cast&lt;</span><a class="code hl_class" href="class_i_sensor.html">ISensor</a>*<span class="keyword">&gt;</span>(device.get())) {</div>
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>                assert(sensor-&gt;getCurrentVoltage() &gt; 0);</div>
+<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>                cout &lt;&lt; <span class="stringliteral">&quot;Напряжение: &quot;</span> &lt;&lt; sensor-&gt;getCurrentVoltage() &lt;&lt; <span class="stringliteral">&quot; В\n&quot;</span>;</div>
+<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>            }</div>
+<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>        }</div>
+<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span>        <span class="keywordtype">bool</span> caught = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>        <span class="keywordflow">try</span> { bulb.setBrightness(150); }</div>
+<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span>        <span class="keywordflow">catch</span> (<span class="keyword">const</span> invalid_argument&amp; error) {</div>
+<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span>            caught = <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span>            cout &lt;&lt; <span class="stringliteral">&quot;Исключение обработано: &quot;</span> &lt;&lt; error.what() &lt;&lt; <span class="charliteral">&#39;\n&#39;</span>;</div>
+<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span>        }</div>
+<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span>        assert(caught);</div>
+<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span>        cout &lt;&lt; <span class="stringliteral">&quot;Все проверки пройдены\n&quot;</span>;</div>
+<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span>    } <span class="keywordflow">catch</span> (<span class="keyword">const</span> exception&amp; error) {</div>
+<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span>        cerr &lt;&lt; error.what() &lt;&lt; <span class="charliteral">&#39;\n&#39;</span>;</div>
+<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span>        <span class="keywordflow">return</span> 1;</div>
+<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span>    }</div>
+<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span>}</div>
 </div>
 <div class="ttc" id="a_light_bulb_8h_html"><div class="ttname"><a href="_light_bulb_8h.html">LightBulb.h</a></div><div class="ttdoc">Объявление класса LightBulb.</div></div>
 <div class="ttc" id="a_smart_outlet_8h_html"><div class="ttname"><a href="_smart_outlet_8h.html">SmartOutlet.h</a></div><div class="ttdoc">Объявление класса SmartOutlet.</div></div>
@@ -284,7 +294,7 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('tests_8cpp_sou
 <div class="ttc" id="aclass_smart_outlet_html_aff915b353959752dc218932ddc0b9007"><div class="ttname"><a href="class_smart_outlet.html#aff915b353959752dc218932ddc0b9007">SmartOutlet::getStatus</a></div><div class="ttdeci">string getStatus() const override</div><div class="ttdoc">Формирует строку с типом, состоянием и параметрами устройства.</div><div class="ttdef"><b>Определения</b> <a href="_smart_outlet_8cpp_source.html#l00022">SmartOutlet.cpp:22</a></div></div>
 <div class="ttc" id="aclass_thermostat_html"><div class="ttname"><a href="class_thermostat.html">Thermostat</a></div><div class="ttdoc">Умный термостат с температурой и режимом.</div><div class="ttdef"><b>Определения</b> <a href="_thermostat_8h_source.html#l00014">Thermostat.h:14</a></div></div>
 <div class="ttc" id="aclass_thermostat_html_a62f759c79821ea3d111c2fcc9edeb0b7"><div class="ttname"><a href="class_thermostat.html#a62f759c79821ea3d111c2fcc9edeb0b7">Thermostat::getStatus</a></div><div class="ttdeci">string getStatus() const override</div><div class="ttdoc">Формирует строку с типом, состоянием и параметрами устройства.</div><div class="ttdef"><b>Определения</b> <a href="_thermostat_8cpp_source.html#l00022">Thermostat.cpp:22</a></div></div>
-<div class="ttc" id="atests_8cpp_html_ae66f6b31b5ad750f1fe042a706a4e3d4"><div class="ttname"><a href="tests_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4">main</a></div><div class="ttdeci">int main()</div><div class="ttdoc">Загружает десять устройств и выполняет проверки задания.</div><div class="ttdef"><b>Определения</b> <a href="#l00041">tests.cpp:41</a></div></div>
+<div class="ttc" id="atests_8cpp_html_ae66f6b31b5ad750f1fe042a706a4e3d4"><div class="ttname"><a href="tests_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4">main</a></div><div class="ttdeci">int main()</div><div class="ttdoc">Загружает десять устройств и выполняет проверки задания.</div><div class="ttdef"><b>Определения</b> <a href="#l00048">tests.cpp:48</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 </div><!-- container -->
